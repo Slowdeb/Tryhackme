@@ -6,7 +6,7 @@ Overview: In this room we will take advantage of a missconfigured ftp server in 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-We will start enumerating the machine with nmap:
+We will start off by enumerating the machine with nmap:
 
 **nmap -sV -sC -A -p anonymous.thm -oN nmap.txt**
 
