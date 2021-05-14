@@ -2,7 +2,7 @@ Room: [Anonymous](https://tryhackme.com/room/anonymous)
 
 Difficulty: Medium
 
-Description: “Try to get the two flags! Root the machine and prove your understanding of the fundamentals! This is a virtual machine meant for beginners. Acquiring both flags will require some basic knowledge of Linux and privilege escalation methods.”
+Overview: In this room we will take advantage of a missconfigured ftp server in order to modify a script that runs has a cronjob. From there we will use SUID binaries to do privilege escalation. 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
