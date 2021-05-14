@@ -1,3 +1,14 @@
+***still in the work***
+
+
+Room: Alfred
+
+Difficulty:
+
+Overview:
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 First we need to scan for all open ports using nmap, but since the machine doesn't respond to ping (ICMP) we need to adjust the scan:
 
 nmap  -Pn -A -p- 10.10.101.250 -T4
