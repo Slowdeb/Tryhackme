@@ -2,7 +2,7 @@ Room: [Anonymous](https://tryhackme.com/room/anonymous)
 
 Difficulty: Medium
 
-Overview: In this room we will take advantage of a missconfigured ftp server in order to modify a script that runs has a cronjob. From there we will use SUID binaries to do privilege escalation. 
+Overview: In this room we will take advantage of a missconfigured ftp server in order to modify a script that runs has a cronjob. From there we will exploit SUID binaries to do privilege escalation. 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
