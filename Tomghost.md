@@ -34,6 +34,7 @@ This directory was interesting but took me nowhere.
 
 Since i could not login to the Apache server. I google searched and found a vulnerability in tomcat Apache version 9.0.30.
 
+<img width="1343" alt="exploit-db_ghostcat" src="https://user-images.githubusercontent.com/76821053/119219986-05579a80-bae0-11eb-95b9-ca69ba9d0a46.png">
 
 
 There is a LFI vulnerability named Ghostcat for Apache with the CVE-2020-1938. It is read/inclusion vulnerability in the AJP connector in Apache Tomcat. Which means we could read webapp configuration files or even upload and execute code to the target host by exploiting file inclusion through Ghostcat vulnerability.
@@ -50,10 +51,11 @@ After downloading and executing the python script for this vulnerability i found
 
 This credentials lets us login to the machine through ssh:
 
-
-
+![sshskyfuck](https://user-images.githubusercontent.com/76821053/119220050-6aab8b80-bae0-11eb-9005-328ea8acc296.png)
 
 User.txt found:
+
+![usertxt](https://user-images.githubusercontent.com/76821053/119220176-2076da00-bae1-11eb-9ed9-015c2e55ff53.png)
 
 
 
