@@ -2,7 +2,7 @@ room: [tomghost](https://tryhackme.com/room/tomghost)
 
 Difficulty: Easy
 
-Overview: 
+Overview: In this room we’ll be exploiting a LFI vulnerability named Ghostcat in tomcat apache server. Find and decrypt a PGP key, granting us access to do privilege escalation through an SUID binary.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -57,13 +57,13 @@ User.txt found:
 
 ![usertxt](https://user-images.githubusercontent.com/76821053/119220176-2076da00-bae1-11eb-9ed9-015c2e55ff53.png)
 
-After some enumeration of the target system, using tools such has linpeas.sh i found two interesting files in skyfuck home directory:
+After some enumeration of the target system, using tools such has "linpeas.sh" i found two interesting files in skyfuck home directory:
 
 ![credentials_folder](https://user-images.githubusercontent.com/76821053/119220825-4651ae00-bae4-11eb-8456-dd52880ef419.png)
 
 These are encrypted credentials, and there might be a way to decrypt this credentials with “gpg”.
 
-Let's see if we can decrypt them by first importing the tryhackme.asc and them decrypting the credentials.pgp:
+Let's see if we can decrypt them by first importing the tryhackme.asc and then decrypting the credentials.pgp:
 
 ![import_tryhackme](https://user-images.githubusercontent.com/76821053/119220857-6f723e80-bae4-11eb-8f55-01ff91a2ffe0.png)
 
@@ -75,7 +75,7 @@ Now, tryhackme.asc stores a private pgp key inside:
 
 ![cat_tryhackme](https://user-images.githubusercontent.com/76821053/119220952-dee82e00-bae4-11eb-899f-72360b58d9c5.png)
 
-In order to crack this private key we need to download the files to our system system to crack them with john the ripper.
+In order to find the passprase for this private key we need to download the files to our system and brute-force them with "john the ripper".
 
 To download the files from the target to my kali machine i used a tool called “scp”:
 
@@ -89,7 +89,7 @@ To brute-force this key, first we will use "gpg2john" to convert the key into a 
 
 ![cat_hash](https://user-images.githubusercontent.com/76821053/119221121-b7459580-bae5-11eb-95e8-4e969e917bfd.png)
 
-Now just crack it with john the ripper:
+Now just crack it with "john the ripper":
 
 ![john_the_ripper](https://user-images.githubusercontent.com/76821053/119221136-c4fb1b00-bae5-11eb-88de-0b32ddcb702d.png)
 
