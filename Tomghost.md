@@ -57,72 +57,71 @@ User.txt found:
 
 ![usertxt](https://user-images.githubusercontent.com/76821053/119220176-2076da00-bae1-11eb-9ed9-015c2e55ff53.png)
 
-
-
 After some enumeration of the target system, using tools such has linpeas.sh i found two interesting files in skyfuck home directory:
 
-
+![credentials_folder](https://user-images.githubusercontent.com/76821053/119220825-4651ae00-bae4-11eb-8456-dd52880ef419.png)
 
 These are encrypted credentials, and there might be a way to decrypt this credentials with “gpg”.
 
 Let's see if we can decrypt them by first importing the tryhackme.asc and them decrypting the credentials.pgp:
 
+![import_tryhackme](https://user-images.githubusercontent.com/76821053/119220857-6f723e80-bae4-11eb-8f55-01ff91a2ffe0.png)
 
+![decrypt_no_pass](https://user-images.githubusercontent.com/76821053/119220868-78631000-bae4-11eb-8cfc-05ab9a5f2f55.png)
 
 When trying to decrypt credential.pgp it asks for a passphrase. 
 
-
-
 Now, tryhackme.asc stores a private pgp key inside:
 
-
+![cat_tryhackme](https://user-images.githubusercontent.com/76821053/119220952-dee82e00-bae4-11eb-899f-72360b58d9c5.png)
 
 In order to crack this private key we need to download the files to our system system to crack them with john the ripper.
 
-To download the files i used “scp”:
+To download the files from the target to my kali machine i used a tool called “scp”:
 
 scp skyfuck@10.10.191.121:/home/skyfuck/* . 
 
+![scpupload](https://user-images.githubusercontent.com/76821053/119221028-35ee0300-bae5-11eb-9043-70b17b255e72.png)
 
+To brute-force this key, first we will use "gpg2john" to convert the key into a hash:
 
-To brute-force this key, first we will use gpg2john to convert the key into a hash:
+![gpg2john_hash](https://user-images.githubusercontent.com/76821053/119221110-ab59d380-bae5-11eb-8b24-f0857333939c.png)
 
-
-
-
+![cat_hash](https://user-images.githubusercontent.com/76821053/119221121-b7459580-bae5-11eb-95e8-4e969e917bfd.png)
 
 Now just crack it with john the ripper:
 
-
-
-alexandru        (tryhackme)
+![john_the_ripper](https://user-images.githubusercontent.com/76821053/119221136-c4fb1b00-bae5-11eb-88de-0b32ddcb702d.png)
 
 We found our passphrase, now we can decrypt the credential.pgp inside the target machine:
 
-
+![decrypt_gpg](https://user-images.githubusercontent.com/76821053/119221153-dc3a0880-bae5-11eb-8ef2-f54f1bb16f72.png)
 
 We have access to ther user “merlin”:
 
+![su_merlin](https://user-images.githubusercontent.com/76821053/119221223-3935be80-bae6-11eb-89e7-f386e0f57127.png)
 
+“merlin” has SUID permissions to run zip. 
 
-“merlin” has SUID permissions to run zip. With a quick search at GTFOBins we can find our way to escalate privileges to root.
+![merlin_sudo](https://user-images.githubusercontent.com/76821053/119221232-494d9e00-bae6-11eb-8c5b-fe13e864bb69.png)
 
-
+With a quick search at GTFOBins we can find our way to escalate privileges to root.
 
 https://gtfobins.github.io/gtfobins/zip/
 
-
+![gtfobins_zip](https://user-images.githubusercontent.com/76821053/119221276-769a4c00-bae6-11eb-9973-07b4541585f6.png)
 
 We just need to tweek the commands a little bit.
 
 TF=$(mktemp -u)
+
 sudo /usr/bin/zip $TF /etc/hosts -T -TT 'sh #'     → we need to use sudo and specify the location of the zip binary.
 
-
+![zip_privesc](https://user-images.githubusercontent.com/76821053/119221296-8fa2fd00-bae6-11eb-9537-29a05c1e07c9.png)
 
 Has we can see above we have root privileges! 
 
-
+![root_flag](https://user-images.githubusercontent.com/76821053/119221305-9b8ebf00-bae6-11eb-8105-5b3b9aa1ea0f.png)
 
 Success , found the last flag!
 
