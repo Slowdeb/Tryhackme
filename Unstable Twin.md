@@ -38,21 +38,17 @@ It is empty, besides the /info directory i found with gobuster:
 
 Using "curl" we will try to get more information from the http headers:
 
-![curlxget](https://user-images.githubusercontent.com/76821053/119571524-5a7a0180-bda9-11eb-8536-6795514063ec.png)
-
 
 
 Found the build version number for Vincent server:
 
-
+![curlxget](https://user-images.githubusercontent.com/76821053/119571524-5a7a0180-bda9-11eb-8536-6795514063ec.png)
 
 Since there was a json file in the directory i did a GET request with option -H to accept application/json:
 
-
+![jsonfilecurl](https://user-images.githubusercontent.com/76821053/120120298-3432d800-c194-11eb-9f09-3058d585b789.png)
 
 Found a new build number and a new server name.
-
-
 
 Now i know that this server is vulnerable to sql injection, i need to find a way point to exploit it.
 
