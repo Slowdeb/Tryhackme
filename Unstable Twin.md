@@ -50,7 +50,7 @@ Since there was a json file in the directory i did a GET request with option -H 
 
 Found a new build number and a new server name.
 
-Now i know that this server is vulnerable to sql injection, i need to find a way point to exploit it.
+Now the room hinted that the server is vulnerable to sql injection, i need to find a way point to exploit it.
 
 The server talks about “login API” so i try to see if there is anykind of vulnerability there:
 
