@@ -186,7 +186,7 @@ When running “linpeas.sh” i manage to found and interesting setuid binary ca
 
 ![lin_capabilities](https://user-images.githubusercontent.com/76821053/120696069-03101b80-c4a4-11eb-8f58-114ca4412c41.png)
 
-The root user (or any ID with UID of 0) gets a special privileges running processes. The kernel and applications are usually programmed to skip the restriction of some activities when seeing this user ID. 
+The root user (or any ID with UID of 0) gets special privileges running processes. The kernel and applications are usually programmed to skip the restriction of some activities when seeing this user ID. 
 
 More info on setuid capabilities can be found [here](https://book.hacktricks.xyz/linux-unix/privilege-escalation/linux-capabilities).
 
@@ -198,7 +198,7 @@ Now to elevate our privileges to root we just need to execute this command:
 
 ![privesc_cat_root](https://user-images.githubusercontent.com/76821053/120696264-410d3f80-c4a4-11eb-877f-f4f6289e54c3.png)
 
-Success! We found our last flag!
+Success! We found the last flag!
 
 
 
