@@ -2,7 +2,7 @@ Room: [Wonderland](https://tryhackme.com/room/wonderland)
 
 Difficulty: Medium
 
-Overview: This room is really interesting has you are going to exploit diferent types of privilege escalations, from PATH hijacking, scripting, analyzing binaries and setuid capabilities will make escalate horizontaly from user to user till you get to root!
+Overview: This room is really interesting has you are going to exploit diferent types of privilege escalations, from PATH hijacking, scripting, analyzing binaries and setuid capabilities will make you privesc horizontaly from user to user till you get to root!
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
