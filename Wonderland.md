@@ -48,7 +48,7 @@ dir             → Uses directory/file enumeration mode
 
 We found a new directory:
 
-![httphome](https://user-images.githubusercontent.com/76821053/120692711-0c978480-c4a0-11eb-9c06-7a6c5b320787.png)
+![http_r](https://user-images.githubusercontent.com/76821053/120696717-c2fd6880-c4a4-11eb-838c-d15350d0c805.png)
 
 After reading the “Keep going” tip, i ran “Gobuster” again and found another directory:
 
@@ -124,13 +124,13 @@ Run the binary:
 
 ![run_teaparty](https://user-images.githubusercontent.com/76821053/120694189-d22ee700-c4a1-11eb-87a3-2e60f53a814b.png)
 
-The binary “teaParty” has SUID permissions, and to be able to read its contents we need to transfer it to our system, since we cannot run strings on the target machine.
+The binary “teaParty” has SUID permissions, and to be able to read its contents we need to transfer it to our system, since we cannot run "strings" on the target machine.
 
-To transfer the file to our system we need to change “rabbit” home directory permissions to "rwx (or 777)" for all users since we don't have "rabbit's" ssh password.
+To transfer the file to our system we need to change “rabbit” home directory permissions to "rwx (or 777)" for all users since we don't have "rabbits" ssh password.
 
 ![chmod_rabbit](https://user-images.githubusercontent.com/76821053/120694580-4ff2f280-c4a2-11eb-8107-e1065ce3a692.png)
 
-From our machine we can run scp to download the file:
+From our machine we can run "scp" to download the file:
 
 **scp alice@10.10.189.225:/home/rabbit/teaParty .**
 
@@ -144,7 +144,7 @@ We can see that the binary runs “/bin/echo” and also runs “date” but it 
 
 This is another privilege escalation method here, we will take advantage of the SUID binary teaParty!
 
-We have to create a small “date” bash script that calls for /bin/bash and export $PATH to one specified by us and take advange of “date” not having a absolute path.
+We have to create a small “date” bash script that executes /bin/bash and export $PATH to one specified by us and take advantage of “date” not having an absolute path.
 
 ![script_date](https://user-images.githubusercontent.com/76821053/120694943-ab24e500-c4a2-11eb-840e-5bf411021bbf.png)
 
