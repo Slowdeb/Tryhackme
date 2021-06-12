@@ -8,7 +8,7 @@ Overview: In this room we will take advantage of a missconfigured ftp server in 
 
 We will start off by enumerating the machine with nmap:
 
-**nmap -sV -sC -A -p anonymous.thm -oN nmap.txt**
+**nmap -sV -sC -A -p- anonymous.thm -oN nmap.txt**
 
 ![nmap1](https://user-images.githubusercontent.com/76821053/118256768-c30dd800-b4a5-11eb-8835-6cbb9f426a20.png)
 ![nmap2](https://user-images.githubusercontent.com/76821053/118256851-d7ea6b80-b4a5-11eb-9455-def0bbef6f87.png)
