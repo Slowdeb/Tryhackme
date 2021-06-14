@@ -253,3 +253,8 @@ I tried many different decoders till i find the right one at https://gchq.github
 
 
 The string was base62.
+
+```bash
+find / -perm -4000 -type f -exec ls -la {} 2>/dev/null \;
+find / -uid 0 -perm -4000 -type f 2>/dev/null
+```
