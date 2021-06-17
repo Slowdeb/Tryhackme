@@ -7,8 +7,9 @@ Overview: In this room we’ll be exploiting a LFI vulnerability named Ghostcat 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 First we will use nmap to scan for all open ports on the remote host.
-
+```bash
 nmap -sV -sC -A -p- 10.10.191.121 -oN nmap.txt
+```
 
 ![nmap](https://user-images.githubusercontent.com/76821053/119219288-9f1d4880-badc-11eb-851e-ec369e94bee5.png)
 
@@ -78,9 +79,9 @@ Now, tryhackme.asc stores a private pgp key inside:
 In order to find the passprase for this private key we need to download the files to our system and brute-force them with "john the ripper".
 
 To download the files from the target to my kali machine i used a tool called “scp”:
-
+```bash
 scp skyfuck@10.10.191.121:/home/skyfuck/* . 
-
+```
 ![scpupload](https://user-images.githubusercontent.com/76821053/119221028-35ee0300-bae5-11eb-9043-70b17b255e72.png)
 
 To brute-force this key, first we will use "gpg2john" to convert the key into a hash:
@@ -112,11 +113,11 @@ https://gtfobins.github.io/gtfobins/zip/
 ![gtfobins_zip](https://user-images.githubusercontent.com/76821053/119221276-769a4c00-bae6-11eb-9973-07b4541585f6.png)
 
 We just need to tweek the commands a little bit.
-
+```bash
 TF=$(mktemp -u)
 
 sudo /usr/bin/zip $TF /etc/hosts -T -TT 'sh #'     → we need to use sudo and specify the location of the zip binary.
-
+```
 ![zip_privesc](https://user-images.githubusercontent.com/76821053/119221296-8fa2fd00-bae6-11eb-9537-29a05c1e07c9.png)
 
 Has we can see above we have root privileges! 
