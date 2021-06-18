@@ -1,5 +1,3 @@
-***STILL N THE WORKS!***
-
 Room: [Unstable Twin](https://tryhackme.com/room/unstabletwin)
 
 Difficulty: Medium
