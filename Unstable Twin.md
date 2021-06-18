@@ -4,17 +4,21 @@ Room: [Unstable Twin](https://tryhackme.com/room/unstabletwin)
 
 Difficulty: Medium
 
-Overview:
+Overview: In this room we will take advantage of the API service, conjuring a script with sql arguments that will dump data from a database. We will have to use stenography, brute-forcing, criptography till we get our last flag!
 
 
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 First we will start off our target enumeration by doing "Nmap" scan:
-
+```
 nmap -sV -sC -A -p- 10.10.121.127 -oN nmap.txt -T4
 
-10.10.121.127 - room ip address
+-sV → Probe open ports to determine service
+-sC → Scan using the default set of scripts
+-p- → Scan all ports
+-oN → Save the ouput of the scan in a file
+```
 
 ![nmap](https://user-images.githubusercontent.com/76821053/119569292-74feab80-bda6-11eb-94d8-abcdc12f2fa0.png)
 
@@ -88,9 +92,9 @@ From the result of the scipt above we can see that the server has 2 tables. Now 
 
 
 To display the names of the tables i used the Integer/string based - Extract table name from PayloadAllTheThings.
-
+```bash
 payload = ["1' UNION SELECT 1, tbl_name FROM sqlite_master WHERE type='table' and tbl_name NOT like 'sqlite_%'--+ '"]
-
+```
 When combining the new string injection we needed to had number 1, like so:
 
 original: 
@@ -187,18 +191,17 @@ eaf0651dabef9c7de8a70843030924d335a2a8ff5fd1b13c4cb099e66efe2......7dd99c43b0c01
 ```
 To see what type of hash we have here we can use "hash-identifier":
 
-![hash_identifier](https://user-images.githubusercontent.com/76821053/122591953-95472080-d05b-11eb-92ad-111758d9a2fa.png)
+![hash_identifier](https://user-images.githubusercontent.com/76821053/122594834-7b0f4180-d05f-11eb-8442-e0d5b1f5925f.png)
 
 
 We can now start john the ripper to decrypt the hash:
 
-![john](https://user-images.githubusercontent.com/76821053/122592258-f66ef400-d05b-11eb-946b-36b9fcad4f82.png)
+![john](https://user-images.githubusercontent.com/76821053/122594778-6468ea80-d05f-11eb-8226-56f098580077.png)
 
 
 You could also use crackstation.net to do this:
 
-![crackstation](https://user-images.githubusercontent.com/76821053/122592285-ff5fc580-d05b-11eb-8297-a5373e5a8c28.png)
-
+![crackstation](https://user-images.githubusercontent.com/76821053/122594897-911d0200-d05f-11eb-9b6c-1b5a8cc826b1.png)
 
 Now that we have a password we'll use ssh to connect to the target machine.
 
