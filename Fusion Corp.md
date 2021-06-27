@@ -1,3 +1,11 @@
+Room: [Fusion Corp](https://tryhackme.com/room/fusioncorp)
+
+Difficulty: Hard
+
+Overview: In this room we will take advantage of different services on a windows machine, abusing Kerberos pre-authentication to enumerate users, dumping and cracking hashes with the help of impacket tools and John the ripper to finaly privesc exploiting SeBackupPrivilege permissions.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Like always we start our enumeration by running “nmap” to scan for all open ports on the target system:
 
 ```
@@ -37,7 +45,7 @@ Content of "employees.ods":
 
 ![image](https://user-images.githubusercontent.com/76821053/123538400-a7e0ea00-d72c-11eb-8a12-437c14f90969.png)
 
-With this information we can create a username wordlist and use “kerbrute" which is a enumeration tool used to brute-force and enumerate valid  active-directory users by abusing the Kerberos pre-authentication.
+With this information we can create a username wordlist and use “kerbrute" which is a enumeration tool used to brute-force and enumerate valid users by abusing the Kerberos pre-authentication.
 
 ![image](https://user-images.githubusercontent.com/76821053/123538409-b202e880-d72c-11eb-8d0f-2b958c9c3e77.png)
 
