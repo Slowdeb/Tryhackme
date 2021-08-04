@@ -327,7 +327,9 @@ We have credentials for user “terrance”. We can use them against the http://
 
 ![image](https://user-images.githubusercontent.com/76821053/128167540-e1135fa3-33d9-4fd1-85c6-d3d319f48756.png)
 
-We can change a bundles.php file in the “configuration/All configuration files” tab. So i change the content of bundles.php for a php payload from pentestmonkey.
+To get a reverse shell connection from the web server we can do it two ways:
+
+We can change the bundles.php file in the “configuration/All configuration files” tab. So i change its contents for a php payload from pentestmonkey.
 
 Change this fields on the Pentestmonkey php reverse shell:
 
