@@ -49,7 +49,7 @@ Since nothing groundbraking was found with "gobuster" let us try and also search
 
 ![image](https://user-images.githubusercontent.com/76821053/128164098-14e2aa19-1ee8-453e-862e-18f246674636.png)
 
-With ffuf we have found a sub-domain that hosts a chat app called rocket.chat. After a quick search at exploit-db.com we can see that there is a recent entry for a Rocket.chat rce exploit.
+With ffuf we have found a subdomain that hosts a chat app called rocket.chat. After a quick search at exploit-db.com we can see that there is a recent entry for a Rocket.chat rce exploit.
 
 This exploit has a CVE number of CVE-2021-22911, which let us exploit the server through NoSQL injection, hijacking user accounts (like admin), escalate privileges, and execute arbitrary system commands on the host server.
 
