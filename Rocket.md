@@ -459,7 +459,7 @@ usr/bin/ruby2.5 -e 'Process::Sys.setuid(0); exec "cp --preserve=mode /tmp/.X1-lo
 
 ![image](https://user-images.githubusercontent.com/76821053/128169403-64dc9355-e60d-4295-9253-90d44a36fb38.png)
 
-Success, since /bin/bash is disguised has .x2-lock binary in the /tmp directory we can just run it referencing -p for persistence and escalate our privileges!!
+Success, since /bin/bash is disguised has .x2-lock binary in the /tmp directory we can just run it specifying -p for persistence and escalate our privileges!!
 
 ![image](https://user-images.githubusercontent.com/76821053/128169452-21c87c60-5956-41e1-81e1-6de400799c04.png)
 
