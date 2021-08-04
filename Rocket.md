@@ -339,7 +339,7 @@ Edit and save the bundles.php file:
 
 ![image](https://user-images.githubusercontent.com/76821053/128167651-5d76dad9-94ea-407b-9cde-dfad1ccfc2b5.png)
 
-Setup the listener, refreshe the page and recieve the shell:
+Setup the listener, refresh the page and recieve the shell:
 
 ![image](https://user-images.githubusercontent.com/76821053/128167713-23f80bd8-175a-40d2-aefe-ac9a21d93319.png)
 
