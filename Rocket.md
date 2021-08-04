@@ -263,7 +263,7 @@ On the attacker machine:
 On the client machine:
 
 ```
-./chisel client 10.11.23.202:8000 R:8081:172.17.0.4:8081
+./chisel client server_ip:8000 R:8081:172.17.0.4:8081
 ```
 
 ![image](https://user-images.githubusercontent.com/76821053/128166171-ec457b21-4980-44cf-95e6-c7df55bd63a8.png)
