@@ -2,7 +2,7 @@ Room: [Rocket](https://tryhackme.com/room/rocket)
 
 Difficulty: Hard
 
-Overview: In this room enumeration is very important, searching for subdomains, modify an exploit so we can exploit a chat program has well a MongoDb web interface. Find and crack hashes to compromise a Bolt CMS server till we privesc to root through cap_setuid+ep capabilities.
+Overview: In this room enumeration is very important, searching for subdomains, modify an exploit to take advantage of a chat program has well a MongoDb web interface. Find and crack hashes to compromise a Bolt CMS server till we privesc to root through cap_setuid+ep capabilities.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
