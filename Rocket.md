@@ -343,7 +343,7 @@ Setup the listener, refresh the page and recieve the shell:
 
 ![image](https://user-images.githubusercontent.com/76821053/128167713-23f80bd8-175a-40d2-aefe-ac9a21d93319.png)
 
-Another way is at “Main configuration” where we can change the permissions on the config.yaml to accept file uploads of .php format:
+Another way is at “Main configuration” where we can change the permissions of the config.yaml to accept file uploads of .php format:
 
 ![image](https://user-images.githubusercontent.com/76821053/128167793-9868f140-69d5-4cf5-b607-cf6a82347ed2.png)
 
