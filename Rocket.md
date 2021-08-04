@@ -22,6 +22,7 @@ nmap -sV -sC -p- rocket.thm -oN nmap.txt
 There are only two ports open on the target system:
 
 22 → OpenSSH 7.6p1
+
 80 → Apache httpd 2.4.29
 
 At the http server we have a normal website, besides finding users emails, there is not much in it:
