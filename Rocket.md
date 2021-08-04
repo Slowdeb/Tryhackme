@@ -208,7 +208,7 @@ Success the exploit worked, it privesc to admin and executed a custom bash rever
 
 ![image](https://user-images.githubusercontent.com/76821053/128165342-18106b2a-cdc1-4031-9ccc-7c915e90067b.png)
 
-After looking around, if we check the environment variables there is a MongoDB Web Interface running on port 8081:
+After looking around, in the environment variables there is a MongoDB Web Interface running on port 8081:
 
 ![image](https://user-images.githubusercontent.com/76821053/128165515-f04720a8-3696-4936-9239-629014d073f5.png)
 
