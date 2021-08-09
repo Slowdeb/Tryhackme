@@ -357,7 +357,7 @@ To trigger the exploit use this option:
 
 And in our listener we recieve a reverse shell.
 
-![image](https://user-images.githubusercontent.com/76821053/128167901-522b2dbf-caa5-4085-850a-6920d72ce299.png)
+![image](https://user-images.githubusercontent.com/76821053/128695944-3ed471ad-a6b6-4a12-be60-111809572e94.png)
 
 To upgrade the shell to a fully interactive tty shell in order use commands like sudo, etc.. we can use this command:
 
