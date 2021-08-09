@@ -373,7 +373,7 @@ The user.txt flag is in alvin's home directory:
 
 I Transfer linpeas.sh to the target machine to enumerate it further:
 
-![image](https://user-images.githubusercontent.com/76821053/128168087-6acbcd71-37fd-418e-a435-a2d4bd9d6500.png)
+![image](https://user-images.githubusercontent.com/76821053/128696185-4b707df1-a87a-4ee4-af81-086a02341e8e.png)
 
 And found a privesc that i already exploited in the past:
 
