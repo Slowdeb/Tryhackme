@@ -341,7 +341,7 @@ Edit and save the bundles.php file:
 
 Setup the listener, refresh the page and recieve the shell:
 
-![image](https://user-images.githubusercontent.com/76821053/128167713-23f80bd8-175a-40d2-aefe-ac9a21d93319.png)
+![image](https://user-images.githubusercontent.com/76821053/128695639-a234be2c-b0b3-49db-8d23-8c44cec470eb.png)
 
 Another way is at “Main configuration” where we can change the permissions of the config.yaml to accept file uploads of .php format:
 
