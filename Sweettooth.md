@@ -37,7 +37,7 @@ I didn't found much but i got a response from “query”. So maybe there is a w
 
 After searching online for a vulnerability or exploit i found out that there is a CVE number CVE-2019-20933.  So for all InfluxDB versions below v1.7.6 there is a authentication bypass vulnerability in the authenticate function in services/httpd/handler.go because a JWT token may have an empty SharedSecret (aka shared secret).
 
-We can find an awesome exploit from LorenzoTullini [github](https://github.com/LorenzoTullini/InfluxDB-Exploit-CVE-2019-20933) to exploit the target system. Even though the script can brute force users, it couldn't find one for this webserver. 
+We can find an awesome exploit from LorenzoTullini [github](https://github.com/LorenzoTullini/InfluxDB-Exploit-CVE-2019-20933) to exploit the target system. Even though the script can brute force users, it couldn't find one for this database. 
 
 After looking at the documentation of InfluxDB there is a path that queries users:
 
