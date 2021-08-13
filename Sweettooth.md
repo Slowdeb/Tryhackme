@@ -2,7 +2,7 @@ Room: [Sweettooth inc.](https://tryhackme.com/room/sweettoothinc)
 
 Difficulty: Medium
 
-Overview: In this room we’ll be taking advantage of a misconfigured InfluxDB database, through a authentication bypass vulnerability to access its contents. This will leads us to a docker container where we are going to privesc to root and later on escape from the container.     
+Overview: In this room we’ll be taking advantage of a misconfigured InfluxDB database, through a authentication bypass vulnerability we can access its contents. This will leads us to a docker container where we are going to privesc to root and later on escape from the container.     
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
