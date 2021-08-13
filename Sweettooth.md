@@ -49,7 +49,7 @@ curl http://influxDb:8086/debug/requests
 
 ![image](https://user-images.githubusercontent.com/76821053/129366929-c8e9f596-5654-4f40-8d8d-fd30cddce56d.png)
 
-With curl we found the user that we needed to exploit influxDB version 1.3.0.  Now we can just run the CVE-2019-20933 influxDB exploit:
+With curl we found the user needed to exploit influxDB version 1.3.0.  Now we can just run the CVE-2019-20933 influxDB exploit:
 
 ![image](https://user-images.githubusercontent.com/76821053/129366964-54d011b5-1152-49f8-b413-38710650c88b.png)
 
