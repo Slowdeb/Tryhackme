@@ -49,20 +49,20 @@ curl http://influxDb:8086/debug/requests
 
 ![image](https://user-images.githubusercontent.com/76821053/129366929-c8e9f596-5654-4f40-8d8d-fd30cddce56d.png)
 
-With curl we found the user needed to exploit influxDB version 1.3.0.  Now we can just run the CVE-2019-20933 influxDB exploit:
+With curl i found the user needed to exploit influxDB version 1.3.0.  Now we can just run the CVE-2019-20933 influxDB exploit:
 
 ![image](https://user-images.githubusercontent.com/76821053/129366964-54d011b5-1152-49f8-b413-38710650c88b.png)
 
-Inside the way we move through the database is through some basic commands like:
+Inside the way we move through the database is with some basic commands:
 
 ```
 Type database name to access it, example: tanks
 To exit that database just write “exit”
-To access the contents of the database : SHOW measurements
+To display the contents of the database : SHOW measurements
 To select any columns from tables or database: SELECT * FROM (database/table)
 ```
 
-To find the temperature of the water tank we need to query the database tanks. 
+To find the temperature of the water tank we need to query the database "tanks". 
 
 ![image](https://user-images.githubusercontent.com/76821053/129366985-dc8a78f1-95f1-4943-9dce-e4f5d3217c2f.png)
 
