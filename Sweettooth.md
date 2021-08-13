@@ -130,7 +130,7 @@ As we can see here a socat service is running in port 8080 which is very interes
 
 ![image](https://user-images.githubusercontent.com/76821053/129367761-a5d7087e-ecff-4e8f-acd3-b01789def9c4.png)
 
-And since /var/run/docker.dock is vulnerable. We are going to privesc with a docker container. 
+And since /var/run/docker.dock is vulnerable. We are going to privesc exploiting a docker container. 
 
 ![image](https://user-images.githubusercontent.com/76821053/129367805-9f692b87-7d09-4558-8c26-5a04ad92942e.png)
 
