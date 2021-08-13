@@ -118,7 +118,7 @@ chmod +x linpeas.sh
 
 ![image](https://user-images.githubusercontent.com/76821053/129367579-4701379c-8b79-4482-8f0f-a05c435f7b66.png)
 
-I normally upload files to /tmp folder, since it removes all its contents at restart:
+I normally upload files to /tmp folder, since this directory will removes all of its contents at restart:
 
 ![image](https://user-images.githubusercontent.com/76821053/129367614-6d1856cb-f9b9-4f17-9907-54bec32bcfd1.png)
 
