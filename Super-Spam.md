@@ -1,3 +1,11 @@
+Room: [Super-Spam](https://tryhackme.com/room/superspamr)
+
+Difficulty: Medium
+
+Overview: Good reconaissance and enumeration of the machine is the key, gather information about users, access a misconfigured ftp service, crack a .cap wifi file which will lead us to a reverse shell. Go through encryption files to privesc horizontly and eventualy take advantage of VNC service to reach our privesc to root.   
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 Let's start our enumeration fase by running “nmap” to check for all open ports on the target system:
 
 ```
@@ -13,10 +21,14 @@ nmap -sV -sC -p- superspam.thm -oN nmap.txt
 
 There are five open ports on the target system:
 
-80     →  HTTP Apache 2.4.29
+80   →  HTTP Apache 2.4.29
+
 4012 →  OpenSSH 7.6p1
+
 4019 →  FTP vsftpd 3.0.3
+
 5901 →  VNC (protocol 3.8)
+
 6001 →  X11 (unknown service)
 
 When visiting the webserver at port 80 i found a website built with Concrete5 CMS:
