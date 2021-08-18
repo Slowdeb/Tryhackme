@@ -118,7 +118,7 @@ hydra -L users.txt -p xxxxxxxx superspam.thm http-post-form "/concrete5/index.ph
 
 ![image](https://user-images.githubusercontent.com/76821053/129764754-11002e6a-c0ae-49a3-9271-f8308e99c4b0.png)
 
-This password belongs to user “Donald_Dump” and we can successfully login and head to the dashboard to see if we can in some way get a reverse shell connection:
+This password belongs to user “Donald_Dump” and we can successfully login and head to the dashboard to see if there is some way to get a reverse shell connection:
 
 ![image](https://user-images.githubusercontent.com/76821053/129764789-effe4d65-fd3f-457f-b3f7-b9fc9d234fd8.png)
 
