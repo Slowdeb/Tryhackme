@@ -80,7 +80,7 @@ note.txt:
 
 ![image](https://user-images.githubusercontent.com/76821053/129764449-76129a62-4b42-40e7-9439-76dea9fe0da2.png)
 
-This note had a hint sugesting that we would find something in the wireshark pcap files. I downloaded the pcap files from IDS_logs directory and explored it a bit and found a SMB hash that could possible be cracked. But this route was leading me through a possible rabbit hole since super-spam hacker acknowledge it in this note.
+This note had a hint sugesting that we would find something in the wireshark pcap files. I downloaded the pcap files from IDS_logs directory and explored it a bit and found a SMB hash that could possible be cracked. But this i looked aside since i found a new file that had the unswer i needed.
 
 ![image](https://user-images.githubusercontent.com/76821053/129764553-fc38e0e2-bb0d-4cb1-9a4e-9f725d7c7247.png)
 
