@@ -146,7 +146,7 @@ Success we are in! The user flag was in “/home/personal/Work” directory:
 
 ![image](https://user-images.githubusercontent.com/76821053/129765003-9e8bf0de-64ba-4551-8209-7a6824559b18.png)
 
-I have found a few clues and messages inside the users home directories:
+There are some clues and messages inside the users home directories:
 
 super-spam home directory:
 
@@ -160,11 +160,11 @@ lucy_loser home directory:
 
 ![image](https://user-images.githubusercontent.com/76821053/129765084-3404b95c-b648-4b0a-9fc2-3276ae1aae7e.png)
 
-Inside lucy_loser home directory we found an interesting directory, inside there was a set of picture files and a python script:
+Inside lucy_loser home directory there was a set of picture files and a python script:
 
 ![image](https://user-images.githubusercontent.com/76821053/129765128-62bbaf46-ce2d-48b7-af89-38047e6f824c.png)
 
-To investigate these files i need to transfer them into my system. The system runs python so we can start an http server with it and download the files to our machine:
+To investigate these files i had to transfer them into my system. The target machine runs python so we can start an http server in it and download the files:
 
 ![image](https://user-images.githubusercontent.com/76821053/129765399-9648c459-069b-4647-915a-03fc44d1c189.png)
 
