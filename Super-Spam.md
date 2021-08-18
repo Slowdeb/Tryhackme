@@ -2,7 +2,7 @@ Room: [Super-Spam](https://tryhackme.com/room/superspamr)
 
 Difficulty: Medium
 
-Overview: Good reconaissance and enumeration of the machine is the key, gather information about users, access a misconfigured ftp service, crack a .cap wifi file which will lead us to a reverse shell. Go through encryption files to privesc horizontly and eventualy take advantage of VNC service to reach our privesc to root.   
+Overview: Good reconaissance and enumeration of the machine is the key, gather information about users, access misconfigured FTP, crack a .cap wifi file which will lead us to a reverse shell. Go through encryption files to achieve a horizontal privesc and eventualy take advantage of VNC service to reach root.   
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
