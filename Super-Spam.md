@@ -168,13 +168,13 @@ To investigate these files i had to transfer them into my system. The target mac
 
 ![image](https://user-images.githubusercontent.com/76821053/129765399-9648c459-069b-4647-915a-03fc44d1c189.png)
 
-After downloading all files i found a password inside d.png file. 
+After downloading all files a password was found inside d.png file. 
 
 ![image](https://user-images.githubusercontent.com/76821053/129765446-7e8fbee0-554b-45b6-8889-ff7511fe0715.png)
 
-Another way to do reach this password is by using the xored.py python script that we found in the same directories has the file.
+Another way to reach this password is by using the xored.py python script that was in the same directory.
 
-Essentialy this script meshes the two images and obfuscates the text. When we combined the right png files it gave us a more clear picture of the password.
+Essentialy this script meshes the two images and obfuscates the text. When we combined the "right" .png files it will give us a clearer picture of the password.
 
 For that i had to run the python script and combine pictures c2.png and c8.png has suggested in lucy_loser note.txt hint: 
 
@@ -202,7 +202,7 @@ When i checked the folder permissions i saw that i needed to set a new one for i
 
 ![image](https://user-images.githubusercontent.com/76821053/129765837-4e21749f-42fd-478c-80f2-0c19af15c4e7.png)
 
-So we can do that just by doing:
+So we can do that just by:
 
 ```
 chmod +x 777 donalddump
