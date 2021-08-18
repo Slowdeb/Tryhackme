@@ -110,8 +110,6 @@ Thinking like the hacker that attacked this machine, maybe we can use this wifi 
 
 We can start by checking if any of the users we found earlier can login with this password:
 
-credentials : sandiago
-
 I used hydra to brute force the concrete5 login portal even though we could do it manually since we only found four users on the webserver:
 
 ```
