@@ -275,11 +275,11 @@ ssh -i id_rsa root@superspam.thm -p 4012
 
 ![image](https://user-images.githubusercontent.com/76821053/129766584-dd4a5a33-3c08-4c76-b036-dc815678b9a7.png)
 
-The final flag was inside .nothing folder inside roots home directory:
+The final flag was inside /root/.nothing directory:
 
 ![image](https://user-images.githubusercontent.com/76821053/129766620-eb733ade-1cc6-45f4-be9b-62e9da1906a5.png)
 
-Still a final challenge. The flag was encoded in base32:
+Nearly at the end but there's a final challenge. The flag was encoded in base32:
 
 ![image](https://user-images.githubusercontent.com/76821053/129766647-2bf7a4eb-5800-4048-834a-67c23d6e1daf.png)
 
