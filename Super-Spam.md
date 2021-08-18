@@ -228,7 +228,7 @@ And just by doing a quick google search i found that VNC password files are norm
 
 ![image](https://user-images.githubusercontent.com/76821053/129765947-ba6d2dcd-e8de-4532-bdde-33bd58c54bb9.png)
 
-In our case we have the passwd file in the home directory. Let's try to loggin through vncviewer:
+In our case we have the passwd file in the home directory. Let's try to log in through vncviewer:
 
 ```
 vncviewer -passwd passwd superspam.thm::5901
@@ -236,15 +236,15 @@ vncviewer -passwd passwd superspam.thm::5901
 -passwd → specify the password file
 ```
 
-After connecting we got this shell:
+After connecting i got this shell:
 
 ![image](https://user-images.githubusercontent.com/76821053/129766216-b9c86b2a-de48-408a-a9ea-6c61008bef16.png)
 
-Let's change this shell into a ssh session since this one is kinda hard to work with and when i listed the contents of /root directory i can see that .ssh is already there and even with the authorized_keys file.
+Let's change this shell into a ssh session since this one is kinda hard to work with and when i listed the contents of /root directory i can see that .ssh is already there and had authorized_keys file inside.
 
 ![image](https://user-images.githubusercontent.com/76821053/129766246-2c5de207-a560-4392-a9f4-bb3400348aee.png)
 
-To create a ssh key we have to use, i left my passphrase empty:
+To create a ssh key we have to use "ssh-keygen", and i left my passphrase empty:
 
 ```
 ssh-keygen
