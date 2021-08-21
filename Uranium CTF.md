@@ -1,8 +1,8 @@
-Room: [Uranium CTF](https://tryhackme.com/room/superspamr)
+Room: [Uranium CTF](https://tryhackme.com/room/uranium)
 
 Difficulty: Hard
 
-Overview: Good reconaissance and enumeration of the machine is the key, gather information about users, access misconfigured FTP, crack a .cap wifi file which will lead us to a reverse shell. Go through encryption files to achieve a horizontal privesc and eventualy take advantage of VNC service to reach root.   
+Overview: This room is a good representation of how social engeneering can be exploited by hackers. Through an email we will get a reverse shell and in a series of meticulous linux privesc exploits we will take over the room. 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -15,6 +15,6 @@ nmap -sV -sC -p- uranium.thm -oN nmap.txt
 -sC  →  Scan using the default set of scripts
 -p-  →  Scan all ports
 -oN  →  Save the ouput of the scan in a file
-uranium.thm → ip of the room
+uranium.thm → ip address of the room
 ```
 
