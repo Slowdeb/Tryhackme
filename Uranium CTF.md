@@ -18,3 +18,17 @@ nmap -sV -sC -p- uranium.thm -oN nmap.txt
 uranium.thm → ip address of the room
 ```
 
+![image](https://user-images.githubusercontent.com/76821053/130331697-57db8ce1-670d-4dc1-970d-1e5ef7dbd2b4.png)
+
+There are three open ports:
+
+22  →   OpenSSH 7.6p1
+
+25  →   SMTP Postfix smtpd
+
+80  →   Apache httpd 2.4.29
+
+
+
+
+
