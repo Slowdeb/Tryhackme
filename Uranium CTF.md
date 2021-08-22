@@ -264,7 +264,7 @@ Listing the contents of the html directory, “kral4” does not have permission
 
 ![image](https://user-images.githubusercontent.com/76821053/130353758-9254e5e1-6e84-436b-8131-ebd9b3d0a7da.png)
 
-So we can take the same approuch and take advantage of /bin/dd binary to edit the index.html file. Again check [GTFOBins](https://gtfobins.github.io/gtfobins/dd/):
+So we can take the same approach and take advantage of /bin/dd binary to edit the index.html file. Again, check [GTFOBins](https://gtfobins.github.io/gtfobins/dd/):
 
 ![image](https://user-images.githubusercontent.com/76821053/130353766-4daa5cb1-0bc7-4ced-870c-b67fbd24d736.png)
 
