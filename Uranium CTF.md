@@ -291,7 +291,7 @@ In this email “root” user tells us that index page was hacked and that he wi
 
 Now that we have “root” SUID permissions on “nano” we can easily privesc vertically.
 
-To do so we can edit /etc/sudoers:
+To do so we can edit /etc/sudoers and add this line:
 
 ```
 hakanbey        ALL=(ALL:ALL) ALL
@@ -299,7 +299,7 @@ hakanbey        ALL=(ALL:ALL) ALL
 
 ![image](https://user-images.githubusercontent.com/76821053/130353815-db75ef42-dfbd-44fe-860f-7fe3a0ff55c8.png)
 
-Since we only have the password of “hakanbey”, we can change is permissions to match “root”. This option indicates that any user can execute a command from any terminal, acting as ALL (or any) user, and run can run any or ALL commands.
+Since we only have the password of “hakanbey”, we can change is permissions to match “root”. This option indicates that any user can execute a command from any terminal, acting as ALL (or any) user, and can run ALL commands.
 
 To get to “root” just change to user “hakanbey" with his credentials and then escalate to “root”:
 
