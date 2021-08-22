@@ -280,7 +280,7 @@ If we check the website, index.html now prints the word “test”:
 
 ![image](https://user-images.githubusercontent.com/76821053/130353788-6167c990-b3cc-4ef0-abbf-7a1cc1bed4f0.png)
 
-So after editing index.html “kral4” eventualy received a new email: 
+So after editing index.html “kral4” eventually receives a new email: 
 
 ![image](https://user-images.githubusercontent.com/76821053/130353797-85354c40-cd17-4999-bacc-abf212798fb4.png)
 ![image](https://user-images.githubusercontent.com/76821053/130353798-93a92165-c494-4b74-b429-6c0fe1602556.png)
