@@ -1,6 +1,3 @@
-ONGOING PROCCESS!
-
-
 Room: [Uranium CTF](https://tryhackme.com/room/uranium)
 
 Difficulty: Hard
@@ -8,6 +5,12 @@ Difficulty: Hard
 Overview: This room is a good representation of how social engeneering can be exploited by hackers. Through an email we will get a reverse shell and in a series of meticulous linux privesc exploits we will take over the room. 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+First Let's add the ip address of the room to /etc/hosts file and set it to uranium.thm:
+
+```
+sudo nano /etc/hosts
+```
 
 Let's start our enumeration fase by running “nmap” to check for all open ports on the target system:
 
