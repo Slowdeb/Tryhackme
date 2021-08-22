@@ -230,7 +230,7 @@ find / -perm -4000 -type f -exec ls -la {} 2>/dev/null \;
 
 ![image](https://user-images.githubusercontent.com/76821053/130353718-e0dff46e-45ef-43e0-a9f0-2a6ef137a7c8.png)
 
-We can run /bin/dd has user “web”.  What can we do with it? We can check [GTFOBins](https://gtfobins.github.io/gtfobins/dd/):
+The /bin/dd binary can be run has user “web”.  What can we do with it? Let's check [GTFOBins](https://gtfobins.github.io/gtfobins/dd/):
 
 ![image](https://user-images.githubusercontent.com/76821053/130353728-8f0102f2-b7ee-45a4-9247-93c0c754b4b6.png)
 
