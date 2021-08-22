@@ -222,7 +222,7 @@ Now that we are in “kral4” account we can find the user_2.txt file in his ho
 
 ![image](https://user-images.githubusercontent.com/76821053/130353714-10ff3fa6-f7e5-46fb-a738-47787b274c0d.png)
 
-Has showned before with linpeas.sh we can manually search for SUID binaries in the system:
+Has shown before with linpeas.sh we can manually search for SUID binaries in the system:
 
 ```
 find / -perm -4000 -type f -exec ls -la {} 2>/dev/null \;
