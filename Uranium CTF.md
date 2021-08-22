@@ -315,7 +315,7 @@ Success, now we can get our final flag!
 
 ![image](https://user-images.githubusercontent.com/76821053/130353832-2275c1d5-8756-4791-900d-5cf5c41860a2.png)
 
-Another way to finish this room without escalating privileges is, if out of the blue we would know the path of “root's” final flag and use “nano” to read it:
+Another way to finish this room without escalating privileges to "root", is if out of the blue we would know the path of “root's” final flag and use “nano” to read its contents:
 
 ![image](https://user-images.githubusercontent.com/76821053/130353840-3d0984b2-ece9-4501-a1e0-6fd103a09aaa.png)
 
