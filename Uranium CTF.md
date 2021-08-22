@@ -12,6 +12,9 @@ First Let's add the ip address of the room to /etc/hosts file and set it to uran
 sudo nano /etc/hosts
 ```
 
+![image](https://user-images.githubusercontent.com/76821053/130353912-28baec0d-7ae1-4bfb-8405-602c32fcd190.png)
+
+
 Let's start our enumeration fase by running “nmap” to check for all open ports on the target system:
 
 ```
