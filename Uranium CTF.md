@@ -285,7 +285,7 @@ So after editing index.html “kral4” eventually receives a new email:
 ![image](https://user-images.githubusercontent.com/76821053/130353797-85354c40-cd17-4999-bacc-abf212798fb4.png)
 ![image](https://user-images.githubusercontent.com/76821053/130353798-93a92165-c494-4b74-b429-6c0fe1602556.png)
 
-In this email “root” user tells us that index page was hacked and that he will give us privilege to fix it. Again checking “kral4” home directory our “nano” binary was modified:
+In this email “root” user tells us that index page was hacked and that he will give us privileges to fix it. Checking “kral4” home directory our “nano” binary was modified:
 
 ![image](https://user-images.githubusercontent.com/76821053/130353807-57c77d24-cbd5-4e3b-9ee3-b8f7905c3401.png)
 
@@ -315,7 +315,7 @@ Success, now we can get our final flag!
 
 ![image](https://user-images.githubusercontent.com/76821053/130353832-2275c1d5-8756-4791-900d-5cf5c41860a2.png)
 
-To finish this room, if out of the blue we would know the path of “root's” final flag we could also use “nano” to read it without having to escalate privileges.
+Another way to finish this room without escalating privileges is, if out of the blue we would know the path of “root's” final flag and use “nano” to read it:
 
 ![image](https://user-images.githubusercontent.com/76821053/130353840-3d0984b2-ece9-4501-a1e0-6fd103a09aaa.png)
 
