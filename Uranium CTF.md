@@ -129,7 +129,7 @@ ssh -i id_rsa hakanbey@uraium.thm
 
 To further enumerate the machine we can upload [linpeas](https://github.com/carlospolop/PEASS-ng/tree/master/linPEAS) to the target machine.
 
-First we need to setup an python3 http server:
+First we need to setup an python3 http server on our attacker:
 
 ```
 python3 -m http.server
