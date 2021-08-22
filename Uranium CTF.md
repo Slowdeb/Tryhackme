@@ -113,7 +113,7 @@ chmod 700 authorized_keys
 
 ![image](https://user-images.githubusercontent.com/76821053/130353513-23b34621-7590-4b69-b1cd-95d87d81bd77.png)
 
-Now we just need to make a copy of id_rsa key to our attacker machine:
+Finally make a copy of id_rsa key to our attacker machine:
 
 ![image](https://user-images.githubusercontent.com/76821053/130353518-7ff851fd-c48c-48f0-b11c-9d25c79442f5.png)
 
