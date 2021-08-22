@@ -199,7 +199,7 @@ So at packet 4 frrom the pcap file we have a possible password:
 
 Why is it a possible password ? Because when we tried to run the chat binary on “hakanbey” directory the first thing it asks is for a password. So logically thinking, before they start to chat the first packets must contain a password.
 
-With the password for the chat program let's run it again and where it will lead us:
+With the password for the chat program let's run it again and see where it will lead us:
 
 ![image](https://user-images.githubusercontent.com/76821053/130353699-5c808c6f-80e4-434b-a8b4-1161de083260.png)
 
