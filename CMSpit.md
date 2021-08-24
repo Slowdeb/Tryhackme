@@ -2,7 +2,7 @@ Room: [CMSpit](https://tryhackme.com/room/cmspit)
 
 Difficulty: Medium
 
-Overview: In this room we are going to exploit a NoSQL injection vulnerability on CMS concrete5, privesc horizontaly and then verticaly taking advantage of a fresh new exploit for a tool called Exiftool.
+Overview: In this room we are going to exploit a NoSQL injection vulnerability on CMS concrete5 webserver, privesc horizontaly and then verticaly taking advantage of a fresh exploit for a tool called Exiftool.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
