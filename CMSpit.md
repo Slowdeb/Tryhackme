@@ -65,9 +65,9 @@ Now we can login to the webserver with the newly created “admin” credentials
 
 After browsing the admin dashboard there is an option to upload files to the webserver, so we are going to upload a php payload to get a reverse shell connection.
 
-The php payload that i like to use is from “pentestmonkey”, we can download it from his [github page](https://github.com/pentestmonkey/php-reverse-shell).
+The php payload that i like to use is from “pentestmonkey”, you can download it from his [github page](https://github.com/pentestmonkey/php-reverse-shell).
 
-We need to change this two parameters, ip and port:
+Change this two parameters, ip and port:
 
 ![image](https://user-images.githubusercontent.com/76821053/130663540-5c05d719-94e6-439a-b53f-206f262673c0.png)
 
