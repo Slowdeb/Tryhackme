@@ -162,7 +162,7 @@ There you will learn how to exploit the system by taking advantage of a tool cal
 
 ![image](https://user-images.githubusercontent.com/76821053/130663950-83e3b5d6-f2ce-4c87-b56e-7792eeb7ebf0.png)
 
-Let's follow the steps and reproduce this vulnerability:
+Let's follow the steps and reproduce this vulnerability.
 
 First we need to create a payload and save it to a file:
 
