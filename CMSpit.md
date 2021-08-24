@@ -87,7 +87,7 @@ http://ip_of_room/install/php-reverse-shell.php
 
 ![image](https://user-images.githubusercontent.com/76821053/130663629-5503c09d-f36f-4308-b871-2495679f7ce4.png)
 
-And in our listener we receiver a shell:
+And in our listener we will receive a shell:
 
 ![image](https://user-images.githubusercontent.com/76821053/130663675-ad2eea14-f9e1-47cd-8488-6e7bfaaccc6f.png)
 
