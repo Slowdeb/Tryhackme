@@ -45,7 +45,7 @@ Now that we have information about the content management system, its name and v
 
 ![image](https://user-images.githubusercontent.com/76821053/130663403-9d54e3c6-a765-4daf-a9b4-08c50504ec5f.png)
 
-There is a exploit with a CVE number or CVE-2020-35846. This exploit takes advantage of NoSQL injection in /auth/check path which will let us do some username Enumeration & Password Reset. You can find more information about this exploit at [PT SWARM webpage](https://swarm.ptsecurity.com/rce-cockpit-cms/). They have a brake down of this exploit in detail. 
+There is a exploit with a CVE number of CVE-2020-35846. This exploit takes advantage of NoSQL injection in /auth/check path which will let us do some username enumeration and password reset. You can find more information about this exploit at [PT SWARM webpage](https://swarm.ptsecurity.com/rce-cockpit-cms/). They have a brake down of this exploit in detail. 
 
 So to automate this process we are going to use the exploit script that we found at exploit-db, this exploit is a combination of CVE-2020-35847 and CVE-2020-35848:
 
