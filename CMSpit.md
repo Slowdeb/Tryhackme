@@ -186,7 +186,7 @@ sudo exiftool exploit.djvu
 
 Success, we are now “root”!!!
 
-We can access “root's” directory directly and read the root.txt file:
+We can access “root's” directory and read the root.txt file:
 
 ![image](https://user-images.githubusercontent.com/76821053/130664023-d82d961c-e580-4015-a5b0-a5df97ce2c63.png)
 
