@@ -22,6 +22,7 @@ nmap -sV -sC -p- cmspit.thm -oN nmap.txt
 There are only two open ports:
 
 22  →  OpenSSH 7.2p2
+
 80  →  Apache httpd 2.4.18
 
 After visiting the webpage i was redirected to a login portal:
