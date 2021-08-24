@@ -2,7 +2,7 @@ Room: [CMSpit](https://tryhackme.com/room/cmspit)
 
 Difficulty: Medium
 
-Overview: This room is really interesting has you are going to exploit diferent types of privilege escalations, from PATH hijacking, scripting, analyzing binaries and setuid capabilities will make you privesc horizontaly from user to user till you get to root!
+Overview: In this room we are going to exploit a NoSQL injection vulnerability on CMS concrete5, privesc horizontaly and then verticaly taking advantage of a fresh new exploit for a tool called Exiftool.
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
