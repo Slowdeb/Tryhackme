@@ -123,13 +123,17 @@ With “stux” we can read the user flag:
 
 ![image](https://user-images.githubusercontent.com/76821053/130663832-2c8b4b5a-ace7-44f2-8235-22655cddf6dc.png)
 
-Now that we are user “stux” let's check his sudo permitions:
+Before going further we can change this shell to a ssh session:
+
+![image](https://user-images.githubusercontent.com/76821053/130667323-dc32ad75-ef30-4996-a6d9-eab557ad013d.png)
+
+Let's check his sudo permitions:
 
 ```
 sudo -l
 ```
 
-![image](https://user-images.githubusercontent.com/76821053/130663855-4e1a96a9-728a-4e07-9502-3f325f75aee3.png)
+![image](https://user-images.githubusercontent.com/76821053/130667424-5ccad75a-8d3c-4826-8672-59aaac4b31f9.png)
 
 “stux” can ran sudo on "exiftool" has user “root”. So let's head to [GTFOBins](https://gtfobins.github.io/gtfobins/exiftool/) and to see if there is any way we can exploit exiftool:
 
