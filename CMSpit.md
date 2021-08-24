@@ -67,7 +67,7 @@ After browsing the admin dashboard there is an option to upload files to the web
 
 The php payload that i like to use is from “pentestmonkey”, you can download it from his [github page](https://github.com/pentestmonkey/php-reverse-shell).
 
-Change this two parameters, ip and port:
+Change this two parameters, ip and port to match your own:
 
 ![image](https://user-images.githubusercontent.com/76821053/130663540-5c05d719-94e6-439a-b53f-206f262673c0.png)
 
