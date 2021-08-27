@@ -188,7 +188,7 @@ Now we have a new password and for what or whom?
 
 This password belongs to user donalddump. When i tried to privesc horizontally to the other users in the machine i was successful with him:  
 
-![image](https://user-images.githubusercontent.com/76821053/129765555-ade309f3-d5d5-4300-b934-40ccd6cc6e42.png)
+![image](https://user-images.githubusercontent.com/76821053/131162602-0c933a16-2c94-4a84-9374-e648ea9e6e06.png)
 
 Since we have good credentials we can try to ssh into the machine with this user:
 
