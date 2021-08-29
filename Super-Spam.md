@@ -140,7 +140,7 @@ Now we just have to upload the payload to the target system and hopefully receiv
 
 Setup the netcat listener on your chosen port and to trigger the payload just press the URL to File link:
 
-![image](https://user-images.githubusercontent.com/76821053/129764978-c58b3b8f-7ee0-4175-8e2c-c740d744f27f.png)
+![image](https://user-images.githubusercontent.com/76821053/131244316-5e0d9125-8a34-4a90-956c-c78d88e5071f.png)
 
 Success we are in! The user flag was in “/home/personal/Work” directory:
 
