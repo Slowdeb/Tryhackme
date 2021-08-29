@@ -288,7 +288,7 @@ If you cannot recognize the encoding there are some websites that can do that fo
 To decode and retrive the final flag:
 
 ```
-echo 'MZWGCZ33NF2GKZKLMRRHKPJ5NBVEWNWCU5MXKVLVG4WTMTS7PU======' | base32 -d
+echo 'MZWGCZ33NF2GKZKL.....5MXKVLVG4WTMTS7PU======' | base32 -d
 ```
 
 ![image](https://user-images.githubusercontent.com/76821053/129766688-473278e6-9d00-4269-89eb-94d8b2593aad.png)
