@@ -1,12 +1,8 @@
-ONGOING PROCESS! NOT FINISHED!
-
 Room: [Unstable Twin](https://tryhackme.com/room/unstabletwin)
 
 Difficulty: Medium
 
 Overview: In this room we will take advantage of the API service, conjuring a script with sql arguments that will dump data from a database. We will have to use stenography, brute-forcing, criptography till we get our last flag!
-
-
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
