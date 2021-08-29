@@ -291,7 +291,7 @@ To decode and retrive the final flag:
 echo 'MZWGCZ33NF2GKZKL.....5MXKVLVG4WTMTS7PU======' | base32 -d
 ```
 
-![image](https://user-images.githubusercontent.com/76821053/129766688-473278e6-9d00-4269-89eb-94d8b2593aad.png)
+![image](https://user-images.githubusercontent.com/76821053/131244366-511594ac-9e93-4953-a9e6-6e996c0d6380.png)
 
 Final teaser!!
 
