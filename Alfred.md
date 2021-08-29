@@ -45,9 +45,11 @@ For this command to work and get a reverse shell on our machine we need to setup
 
 -- Download Nishang "Invoke-PowerShellTcp.ps1" payload script provided by the room. Nishang is a framework and collection of scripts and payloads which enables usage of PowerShell for offensive security.
 
--- A python SimpleHTTPServer in order to host the file to each the remote machine will try to donwload. We can do this by typing this command on a kali machine:
+-- A python SimpleHTTPServer in order to host the file that the remote machine will try to donwload. We can do this by typing this command on a kali machine:
 
-**python -m SimpleHTTPServer**
+```
+python -m SimpleHTTPServer
+```
 
 ![pythonserver](https://user-images.githubusercontent.com/76821053/118032170-3fe26a00-b35f-11eb-919e-8483e5469701.png)
 
