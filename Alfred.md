@@ -126,6 +126,10 @@ On the target machine we just have to run the payload.exe file:
 
 ```
 .\payload.exe 
+
+or
+
+Start-Process “payload.exe”
 ```
 
 ![image](https://user-images.githubusercontent.com/76821053/131249240-10687032-47d2-4c79-a18d-dd7dc907934a.png)
