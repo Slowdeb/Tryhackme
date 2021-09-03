@@ -1,10 +1,8 @@
-***STILL IN THE WORKS!***
+Room: [Alfred](https://tryhackme.com/room/alfred)
 
-Room: Alfred
+Difficulty: Easy
 
-Difficulty:
-
-Overview:
+Overview: This room is a semi-guided challenge. We are going to exploit a Jenkins server, gain an initial shell, then escalate privileges by exploiting Windows authentication tokens with meterpreter module incognito.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
