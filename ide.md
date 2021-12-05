@@ -94,7 +94,7 @@ In this case i uploaded pentestmonkey php reverse shell:
 
 When uploading the reverse shell do not forget to change this fields to match your ip and chosen port.
 
-Now how to we trigger the payload? 
+Now how do we trigger the payload? 
 
 "Gobuster" found many hidden directories and one of them hinted us to a workspace directory:
 
