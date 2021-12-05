@@ -36,7 +36,7 @@ At port 80 there is a Apache server, but it doesn't have anything of interest.
 
 ![image](https://user-images.githubusercontent.com/76821053/144726746-67f83f01-12d3-4d38-9581-305a3b8d157e.png)
 
-At port 62337 there is a Apache server hosting a Codiad IDE framework login portal. 
+At port 62337 there is another Apache server but this one is hosting a Codiad IDE framework login portal. 
 
 ![image](https://user-images.githubusercontent.com/76821053/144726750-18d3c7f5-8f20-4612-b996-da8207234929.png)
 
