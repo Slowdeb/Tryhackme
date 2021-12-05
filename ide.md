@@ -46,7 +46,7 @@ Since we do not have any credentials we can run “Gobuster” which can help us
 gobuster dir --wordlist /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt --url http://ide.thm:62337 -x .txt,.cgi,.php,.log,.bak,.xxx,.old
 
 dir              →  Uses directory/file enumeration mode
---wordlist   → Path to wordlist 
+--wordlist       → Path to wordlist 
 --url            → specifies the path of the target url we want to find any hidden directories
 -x               → Search for all files with the specified extentions 
 
