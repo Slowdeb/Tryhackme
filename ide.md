@@ -23,8 +23,11 @@ ide.thm     → ip address of the room
 There are four open ports in the system:
 
 21       →  vsftpd 3.0.3
+
 22       →  OpenSSH 7.6p1 Ubuntu
+
 80       →  Apache httpd 2.4.29
+
 62337 → Apache httpd 2.4.29 (Codiad 2.8.4)
 
 Normally when manually enumerating the open ports i start by the http web servers.
