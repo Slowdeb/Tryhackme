@@ -120,7 +120,7 @@ But we can read .bash_history, which stores a history of user commands entered a
 
 ![image](https://user-images.githubusercontent.com/76821053/144726836-1fd31136-23e8-4abd-838b-c4e633c2a13e.png)
 
-We have found “drac” credentials for a mysql database, but there is not a mysql database to connect to.
+Last command used by “drac” exposed credentials for a mysql database, but after some search there is not a mysql database to connect to.
 
 What can we do with these credentials? Password reuse is a big vulnerability that affects many users, so an attacker can take advantage of a technique known as "credential stuffing".
 
