@@ -54,7 +54,7 @@ dir              →  Uses directory/file enumeration mode
 
 ![image](https://user-images.githubusercontent.com/76821053/144726760-6f91879f-74f3-4645-b9e1-0e301ea56ad9.png)
 
-Looking at the “Nmap” results we can see that the ftp service allows “Anonymous” login. So we can start by exploring it:
+Leaving "Gobuster" findings on hold for now, let's look at the “Nmap” results. We can see that the ftp service allows “Anonymous” login. So let's start exploring it:
 
 ```
 ftp ide.thm
