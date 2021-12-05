@@ -30,7 +30,7 @@ There are four open ports in the system:
 
 62337 → Apache httpd 2.4.29 (Codiad 2.8.4)
 
-Normally when manually enumerating the open ports i start by the http web servers.
+When manually enumerating open ports we can start by the http web servers.
 
 At port 80 there is a Apache server, but it doesn't have anything of interest.
 
