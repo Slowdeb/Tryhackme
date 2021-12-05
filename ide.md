@@ -124,11 +124,11 @@ Last command used by “drac” exposed credentials for a mysql database, but af
 
 What can we do with these credentials? Password reuse is a big vulnerability that affects many users, so an attacker can take advantage of a technique known as "credential stuffing".
 
-In our case “drac” uses the same password to connect to ssh:
+In our case “drac” uses the same password to connect to other services and one of them is ssh:
 
 ![image](https://user-images.githubusercontent.com/76821053/144726848-c089f583-63ad-412f-8e3a-9d21c2e6d1c0.png)
 
-With “drac” we can read the user.txt flag: 
+Now with user “drac” we can read the user.txt flag: 
 
 ![image](https://user-images.githubusercontent.com/76821053/144726858-5031fb5c-c63e-4c6c-a638-1090e25b4f82.png)
 
