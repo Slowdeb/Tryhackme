@@ -132,7 +132,7 @@ Now with user “drac” we can read the user.txt flag:
 
 ![image](https://user-images.githubusercontent.com/76821053/144726858-5031fb5c-c63e-4c6c-a638-1090e25b4f82.png)
 
-If we look at the sudo permissions for this user we can see that he can run /usr/sbin/service vsftpd restart with full privileges:
+If we look at the sudo permissions for this user we can see that he can run "/usr/sbin/service vsftpd restart" command with full privileges:
 
 ![image](https://user-images.githubusercontent.com/76821053/144726862-48b09620-07cc-4105-810d-e833fe5bc413.png)
 
@@ -140,7 +140,6 @@ When searching for the vsftpd service we can see that we have write privileges.
 
 ```
 find / -type f -name vsftpd.service 2>/dev/null
-
 ```
 
 ![image](https://user-images.githubusercontent.com/76821053/144726864-387bf518-410e-4b27-ae83-8249b95a7c51.png)
