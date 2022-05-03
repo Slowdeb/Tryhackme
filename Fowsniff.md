@@ -30,20 +30,25 @@ There are four open ports on the system:
 
 143 → Dovecot imapd
 
-Since we ahave an apache webserver running in the system we can use "Gobuster" to search for hidden directories or files in http servers:
+Since there is an apache webserver running in the system we can use "Gobuster" to search for hidden directories or files in http servers:
 
 ![image](https://user-images.githubusercontent.com/76821053/166566478-31c90dd0-f9fa-49b7-ad12-2373e6c3f384.png)
 
-When analysing the results there is a security.txt file that we can access.
+When analysing the results "Gobuster" found a security.txt file that we can access.
 
 ![image](https://user-images.githubusercontent.com/76821053/166566690-190a443c-07cf-4192-ad14-1106a39b6ef5.png)
 
+This server was hacked by BigN1nj4! who left a teaser on the website.
 
-
+Now, the room gave us a hint to look for information in google. A little later i found that the hacker leaked information on [PASTEBIN](https://pastebin.com/NrAqVeeX).
 
 ![image](https://user-images.githubusercontent.com/76821053/166566743-734f9fb9-bd15-4b67-b918-d7f297bac6ed.png)
 
+He leaked email passwords dumped from their databases. The hashes are encrypted in MD5 and to decrypt them we can use sites like [hashkiller](https://hashkiller.io/listmanager) or [hashes.com](hashes.com/en/decrypt/hash).
+
 ![image](https://user-images.githubusercontent.com/76821053/166566776-080788b0-f88a-4eae-909f-708dbb0381ec.png)
+
+msfconsole 
 
 ![image](https://user-images.githubusercontent.com/76821053/166566786-731828e6-2214-475f-bbf0-2250f6651b5b.png)
 
