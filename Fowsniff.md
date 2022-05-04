@@ -140,7 +140,7 @@ Pay attention to the syntax because you need to make a little change. Your ip wi
 
 ![image](https://user-images.githubusercontent.com/76821053/166566976-9d18124e-a0e7-41d2-b4c4-a40a231f04a8.png)
 
-We need to setup a netcat listener and restart the ssh connection to trigger the motd welcome message and it will run our reverse shell.
+Now, to make it work we need to setup a netcat listener and restart the ssh connection to trigger the motd welcome message, because when we connect the the file “00-header” will run the cube.sh script with root permissions and it will run our reverse shell.
 
 ![image](https://user-images.githubusercontent.com/76821053/166567250-877a7eed-83b5-4f6a-b846-c0b351b966a6.png)
 
