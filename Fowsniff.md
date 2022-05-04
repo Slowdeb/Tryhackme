@@ -2,7 +2,7 @@ Room: [Fowsniff CTF](https://tryhackme.com/room/ctf)
 
 Difficulty: Easy
 
-Overview: On-going project
+Overview: On-going project - portscanning hashes bruteforcing pop3 metasploit
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
