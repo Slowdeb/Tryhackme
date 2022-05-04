@@ -40,25 +40,62 @@ When analysing the results "Gobuster" found a security.txt file that we can acce
 
 This server was hacked by BigN1nj4! who left a teaser on the website.
 
-Now, the room gave us a hint to look for information in google. A little later i found that the hacker leaked information on [PASTEBIN](https://pastebin.com/NrAqVeeX).
+Now, the room gave us a hint to look for information using google. A little later i found that the hacker leaked information on [PASTEBIN](https://pastebin.com/NrAqVeeX).
 
 ![image](https://user-images.githubusercontent.com/76821053/166566743-734f9fb9-bd15-4b67-b918-d7f297bac6ed.png)
 
-He leaked email passwords dumped from their databases. The hashes are encrypted in MD5 and to decrypt them we can use sites like [hashkiller](https://hashkiller.io/listmanager) or [hashes.com](hashes.com/en/decrypt/hash).
+He leaked email and their respective passwords from their databases. The hashes are encrypted in MD5 and to decrypt them we can use sites like [hashkiller](https://hashkiller.io/listmanager) or [hashes.com](hashes.com/en/decrypt/hash).
 
 ![image](https://user-images.githubusercontent.com/76821053/166566776-080788b0-f88a-4eae-909f-708dbb0381ec.png)
 
-msfconsole 
+After decrypting all MD5 hashes i have created two text files, one with the name of the users found and another with the decrypted passwords.
+
+The purpose is to try to brute force the pop3 login service mail with the dictionaries that we have just created from the two text files.
+
+To find a valid login we can use diferent tools but in this case we will use "metasploit".
+
+```
+msfconsole
+
+search pop3  - To search for pop3 related content
+
+use auxiliary/scanner/pop3/pop3_login   - To select the option we want to use
+```
 
 ![image](https://user-images.githubusercontent.com/76821053/166566786-731828e6-2214-475f-bbf0-2250f6651b5b.png)
 
+```
+options  -  To list the module options that we need to set to do our brute force 
+```
+We have to set PASS_FILE and USER_FILE to the path of our text files and set the RHOSTS to the ip we want to target.
+
 ![image](https://user-images.githubusercontent.com/76821053/166566802-9c2d140a-4738-43ac-b074-b1961c60ea39.png)
+
+To run this module just hit run
+
+```
+run
+```
 
 ![image](https://user-images.githubusercontent.com/76821053/166566824-ba1078f4-2aa8-42fd-9d09-88b61cd8b0df.png)
 
-I have accessed the pop3 service mail through telnet:
+Metaspoit attack found a valid user and respective password. With these credentials we have accessed the pop3 email service hosted at port 110.
 
-In this website you information about commands https://www.shellhacks.com/retrieve-email-pop3-server-command-line/
+To access the email service we can use "Telnet". In this website you can find information "Telnet" about commands https://www.shellhacks.com/retrieve-email-pop3-server-command-line/
+
+```
+telnet 10.10.125.75 110
+
+USER seina 
+
+PASS *******
+
+LIST     - Lists all messages
+
+RETR 1   - Retrieve first message
+
+RETR 2   - Retrives second message
+```
 
 ![image](https://user-images.githubusercontent.com/76821053/166566847-a75b12cc-aff6-426a-9a04-a431d03db427.png)
 
