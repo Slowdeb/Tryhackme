@@ -60,3 +60,14 @@ I found a hash and by the looks of it is encoded in base64.
 
 ![decodehash](https://user-images.githubusercontent.com/76821053/185762231-7686c7d6-b8fb-4337-b674-747ca521271f.png)
 
+After decoding the hash i found credentials for a user named "Elliot". With these credentials we can access the website admin login page:
+
+![wpdashboard](https://user-images.githubusercontent.com/76821053/185762692-9b53da6b-2af4-4936-b93d-b0b0dc7e36b9.png)
+
+Now, we can get a foothold on the target system with a reverse shell through the Appereance page, which lets me edit themes. So i will use pentestmonkey php-reverse-shell.
+
+I edited the page template.php or archives.php so when i ran a preview of the theme Twenty Thirteen i got a reverse shell.
+
+Sometimes i need to go to the link manually, example:
+
+
