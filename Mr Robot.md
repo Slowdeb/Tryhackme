@@ -44,7 +44,19 @@ Inside there's two file directories:
 
 ![robotshttp](https://user-images.githubusercontent.com/76821053/185761286-1961b69d-3fea-4594-9ea9-313ec5ef5aef.png)
 
+Found first flag:
 
+![flag1](https://user-images.githubusercontent.com/76821053/185761507-25c3ab56-b750-4164-ab33-9276605ca8df.png)
 
+I continued searching for more information and found a teaser on the license.txt file directory:
 
+![licencetxt](https://user-images.githubusercontent.com/76821053/185761854-87496a4b-3947-49f0-8bae-4a7d38db47e1.png)
+
+If we scroll down the page there is some valuable information:
+
+<img width="1252" alt="Screenshot 2022-08-20 at 19 49 06" src="https://user-images.githubusercontent.com/76821053/185762146-e12f24da-e99b-4d8d-be52-239d65b30c9a.png">
+
+I found a hash and by the looks of it is encoded in base64.
+
+![decodehash](https://user-images.githubusercontent.com/76821053/185762231-7686c7d6-b8fb-4337-b674-747ca521271f.png)
 
