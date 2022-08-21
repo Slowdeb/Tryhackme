@@ -42,11 +42,11 @@ dir             → Uses directory/file enumeration mode
 
 After searching through some directories, we can see that there is a robots.txt file. A robots.txt file contains instructions for bots/crawlers on which pages they can and cannot access.
 
-Inside there's two file directories:
+Inside there's two file directories, the first one we will put aside for later:
 
 ![robotshttp](https://user-images.githubusercontent.com/76821053/185761286-1961b69d-3fea-4594-9ea9-313ec5ef5aef.png)
 
-Found first flag:
+Checking the second file we can find the first flag:
 
 ![flag1](https://user-images.githubusercontent.com/76821053/185761507-25c3ab56-b750-4164-ab33-9276605ca8df.png)
 
@@ -58,17 +58,17 @@ If we scroll down the page there is some valuable information:
 
 <img width="1252" alt="Screenshot 2022-08-20 at 19 49 06" src="https://user-images.githubusercontent.com/76821053/185762146-e12f24da-e99b-4d8d-be52-239d65b30c9a.png">
 
-At the bottom there is a hash and by the looks of it is encoded in base64.
+At the bottom of the page there is a hash and by the looks it is encoded in base64.
 
 ![decodehash](https://user-images.githubusercontent.com/76821053/185762231-7686c7d6-b8fb-4337-b674-747ca521271f.png)
 
-After decoding the hash i found credentials for a user named "Elliot". With these credentials we can access the website admin login page:
+After decoding the hash i found credentials for a user named "Elliot". With these credentials we can access the website admin dashboard through the login page:
 
 ![wpdashboard](https://user-images.githubusercontent.com/76821053/185762692-9b53da6b-2af4-4936-b93d-b0b0dc7e36b9.png)
 
-Now,the Appearance page lets us edit themes so this is our way to get a foothold on the target system with a reverse shell. For that we can use pentestmonkey php-reverse-shell.
+Now, on the left there is a tab called "Appearance". This is our way to get a foothold on the target system with a reverse shell.
 
-To do so we will need to edit the a page template file and overwrite its contents with pentestmonkey reverse shell. When running the preview of the theme "Twenty Thirteen" we got ourselves a reverse shell.
+To do so we will need to edit a page template file and overwrite its contents with a reverse shell script. In my case i will use "pentestmonkey" reverse shell. When running the preview of the theme "Twenty Thirteen" we got ourselves a reverse shell.
 
 ![reverseshell](https://user-images.githubusercontent.com/76821053/185798374-fd0657da-d16f-49c7-bf0d-45625933d674.png)
 
