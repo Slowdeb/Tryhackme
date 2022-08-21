@@ -68,7 +68,7 @@ After decoding the hash i found credentials for a user named "Elliot". With thes
 
 Now,the Appearance page lets us edit themes so this is our way to get a foothold on the target system with a reverse shell. For that we can use pentestmonkey php-reverse-shell.
 
-To do so we will need to edit the page template.php or archives.php files and overwrite the contents of it with pentestmonkey reverse shell. When running the preview of the theme "Twenty Thirteen" we got ourselves a reverse shell.
+To do so we will need to edit the a page template file and overwrite its contents with pentestmonkey reverse shell. When running the preview of the theme "Twenty Thirteen" we got ourselves a reverse shell.
 
 ![reverseshell](https://user-images.githubusercontent.com/76821053/185798374-fd0657da-d16f-49c7-bf0d-45625933d674.png)
 
