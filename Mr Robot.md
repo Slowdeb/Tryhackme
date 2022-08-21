@@ -2,7 +2,7 @@ Room: [Mr Robot](https://tryhackme.com/room/mrrobot)
 
 Difficulty: Medium
 
-Overview: In this room we will use different techniques/tools to enumerate the target machine since there is sensitive information exposed. After exploiting a webpage admin panel we will use SUID binaries to do privilege escalation and gain full control of the machine.
+Overview: In this room we will use different techniques/tools to enumerate the target machine since there is sensitive information exposed. After exploiting a webpage admin panel we will use an SUID binaries vulnerability to do privilege escalation and gain full control of the machine.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
