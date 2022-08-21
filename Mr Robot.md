@@ -110,10 +110,23 @@ Once we are user "robot" we can now read the second flag!
 
 ![key2](https://user-images.githubusercontent.com/76821053/185800698-6592f8b3-df49-4fd8-b161-2c2bd06729f7.png)
 
+It is now time to start enumerating this linux machine, we could use "linpeas" but in this case we just need to search for SUID permissions on the machine: 
 
+![find-perm](https://user-images.githubusercontent.com/76821053/185801007-ac0180cc-d840-4e83-9e4e-dda68a0cf4b0.png)
 
+I have discovered that the system is running nmap. Knowing that it has SUID permissions there is an awesome website called [GTFOBins](https://gtfobins.github.io) that has list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems:
 
+![GTFOBins](https://user-images.githubusercontent.com/76821053/185801037-064898df-e7f9-487b-80ea-61b12a6a1270.png)
 
+a - didn't work  but b- worked
+
+![privesc](https://user-images.githubusercontent.com/76821053/185801071-1efd22f9-a5ac-4505-acdb-b891ec3da39c.png)
+
+Success, root privileges.
+
+Know i just need to find where is the 3rd flag.
+
+![finalflag](https://user-images.githubusercontent.com/76821053/185801261-547bc5c6-7944-4050-b123-2cbe8cb60f66.png)
 
  
 
