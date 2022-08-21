@@ -2,7 +2,7 @@ Room: [Mr Robot](https://tryhackme.com/room/mrrobot)
 
 Difficulty: Medium
 
-Overview: In this room we will take advantage of different services on a windows machine, abusing Kerberos pre-authentication to enumerate users, dumping and cracking hashes with the help of impacket tools and John the ripper to finaly privesc exploiting SeBackupPrivilege permissions.
+Overview: In this room we will use different techniques to enumerate the target machine since there is sensitive information exposed. After exploiting a webpage admin panel we will use SUID binaries to do privilege escalation and gain full control of the machine.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
