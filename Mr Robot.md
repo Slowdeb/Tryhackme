@@ -68,23 +68,23 @@ After decoding the hash i found credentials for a user named "Elliot". With thes
 
 Now, on the left there is a tab called "Appearance". This is our way to get a foothold on the target system with a reverse shell.
 
-To do so we will need to edit a page template file and overwrite its contents with a reverse shell script. In my case i will use "pentestmonkey" reverse shell. When running the preview of the theme "Twenty Thirteen" we got ourselves a reverse shell.
+To do so we will need to edit a page template php file and overwrite its contents with a reverse shell script. In my case i will use "pentestmonkey" reverse shell. When running the preview of the theme "Twenty Thirteen" we got ourselves a reverse shell.
 
 ![reverseshell](https://user-images.githubusercontent.com/76821053/185798374-fd0657da-d16f-49c7-bf0d-45625933d674.png)
 
-Sometimes to trigger the exploit we need to go to the link manually, example:
+Sometimes to trigger the exploit you have to go to the link manually, example:
 
 ![filephp](https://user-images.githubusercontent.com/76821053/185798206-ee8141f9-c958-4059-a348-53aacadb7115.png)
 
-We need to start a netcat listener and ran the preview.
+Finally, we need to start a netcat listener and run the preview.
  
 ![nclistenner](https://user-images.githubusercontent.com/76821053/185799814-01ab194d-113d-40fc-87f6-73785179fc84.png)
 
-I searched around and found key-2-of-3.txt but i don't have any permissions to open it.
+Once inside i searched around and found key-2-of-3.txt but i don't have any permissions to open it.
 
 ![searchkey2](https://user-images.githubusercontent.com/76821053/185799969-2f6c1e13-88a3-4c34-964b-0197cfffa27e.png)
 
-In the same directory there is a password.raw-md5 file with presumably credentials but encrypted with md5. We can use "john the ripper" to decrypt the file. If you remember earlier there is another file called "fsociety.dic" file in the robots.txt webpage. Since that file is a dictionary we can try to brute force the hash with it.
+In the same directory there is a password.raw-md5 file with presumably credentials but encrypted with md5. We can use "john the ripper" to decrypt the file. If you remember earlier there is another file called "fsociety.dic" in the robots.txt webpage. Since that file is a dictionary we can try to brute force the hash with it.
 
 ![john](https://user-images.githubusercontent.com/76821053/185799991-7d97c9c6-401b-4be2-aacc-96de65a0f33d.png)
 
@@ -92,7 +92,7 @@ Another way you can decrypt the password is by using the website “ https://has
 
 ![hashsite](https://user-images.githubusercontent.com/76821053/185800020-6092c907-6b53-4b24-9120-d7adfb2b5eb2.png)
 
-With the hash decrypted i can now try and access user "robot" on the target system but i need the shell to be interactive:
+With the hash decrypted we can now access user "robot" on the target system but the shell must be interactive:
 
 We can use this python string in order to get an interactive shell:
 
@@ -102,7 +102,7 @@ python -c 'import pty; pty.spawn("/bin/bash")'
 
 ![pythonstring](https://user-images.githubusercontent.com/76821053/185800565-df9dceb3-574f-4ca9-9206-d9e49b6eb186.png)
 
-Now i am able to perform some commands like "su" and use it to access "robot" account:
+Now we are able to perform commands like "su" and use it to access "robot" account:
 
 ![surobot](https://user-images.githubusercontent.com/76821053/185800608-545f27d5-975a-4435-ba99-3d38aaa249f3.png)
 
@@ -114,7 +114,7 @@ It is now time to start enumerating this linux machine, we could use "linpeas" b
 
 ![find-perm](https://user-images.githubusercontent.com/76821053/185801007-ac0180cc-d840-4e83-9e4e-dda68a0cf4b0.png)
 
-I have discovered that the system is running nmap. Knowing that it has SUID permissions, means that it allows users to execute a file as the file owner . For that, there is an awesome website called [GTFOBins](https://gtfobins.github.io) that has list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems:
+I have discovered that the system is running nmap. Knowing that it has SUID permissions, means that it allows users to execute a file as the file owner. For that, there is an awesome website called [GTFOBins](https://gtfobins.github.io) that has list of Unix binaries that can be used to bypass local security restrictions in misconfigured systems:
 
 ![GTFOBins](https://user-images.githubusercontent.com/76821053/185801037-064898df-e7f9-487b-80ea-61b12a6a1270.png)
 
@@ -122,9 +122,9 @@ Option b works like a charm:
 
 ![privesc](https://user-images.githubusercontent.com/76821053/185801071-1efd22f9-a5ac-4505-acdb-b891ec3da39c.png)
 
-Success, now we have "root" privileges.
+Success, we have "root" privileges.
 
-Now you just need to find where is the 3rd and final flag.
+Now, you just need to find where's the 3rd and final flag.
 
 ![finalflag](https://user-images.githubusercontent.com/76821053/185802174-af1a0212-18cb-4c63-ac62-74ec6aa24ff6.png)
 
