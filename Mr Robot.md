@@ -40,7 +40,7 @@ dir             → Uses directory/file enumeration mode
 
 ![gobuster](https://user-images.githubusercontent.com/76821053/185759356-5426e858-a36f-4de9-80d4-3239fdbe3737.png)
 
-After searching through some directories, we can see that there is a robots.txt file. A robots.txt file contains instructions for bots/crawlers on which pages they can and cannot access.
+After searching through the results, we can see that there is a robots.txt file. A robots.txt file contains instructions for bots/crawlers on which pages they can and cannot access.
 
 Inside there's two file directories, the first one we will put aside for later:
 
