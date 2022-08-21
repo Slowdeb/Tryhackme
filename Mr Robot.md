@@ -126,7 +126,7 @@ Success, now we have "root" privileges.
 
 Now you just need to find where is the 3rd and final flag.
 
-![finalflag](https://user-images.githubusercontent.com/76821053/185801261-547bc5c6-7944-4050-b123-2cbe8cb60f66.png)
+![finalflag](https://user-images.githubusercontent.com/76821053/185802174-af1a0212-18cb-4c63-ac62-74ec6aa24ff6.png)
 
  
 
