@@ -21,7 +21,7 @@ nmap -sV -sC -A -p- 10.10.232.56 -oN nmap.txt
 
 There are two open ports on the target system:
 
-22 → ssh (aparently closed)
+22 → ssh (apparently closed)
 
 80 → Apache httpd
 
