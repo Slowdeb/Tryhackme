@@ -22,7 +22,9 @@ nmap -sV -sC -A -p- 10.10.232.56 -oN nmap.txt
 There are two open ports on the target system:
 
 22 → ssh (aparently closed)
+
 80 → Apache httpd
+
 443 → Apache httpd
 
 Since there are two http servers, one on port 80 and the other on port 443. We can use a tool called "Gobuster" to find more information about any hidden directories or files in port 80:
@@ -56,7 +58,7 @@ If we scroll down the page there is some valuable information:
 
 <img width="1252" alt="Screenshot 2022-08-20 at 19 49 06" src="https://user-images.githubusercontent.com/76821053/185762146-e12f24da-e99b-4d8d-be52-239d65b30c9a.png">
 
-I found a hash and by the looks of it is encoded in base64.
+At the bottom there is a hash and by the looks of it is encoded in base64.
 
 ![decodehash](https://user-images.githubusercontent.com/76821053/185762231-7686c7d6-b8fb-4337-b674-747ca521271f.png)
 
@@ -64,10 +66,21 @@ After decoding the hash i found credentials for a user named "Elliot". With thes
 
 ![wpdashboard](https://user-images.githubusercontent.com/76821053/185762692-9b53da6b-2af4-4936-b93d-b0b0dc7e36b9.png)
 
-Now,the Appearance page lets me edit themes so this is our way to get a foothold on the target system with a reverse shell. So i will use pentestmonkey php-reverse-shell.
+Now,the Appearance page lets us edit themes so this is our way to get a foothold on the target system with a reverse shell. For that we can use pentestmonkey php-reverse-shell.
 
-Editing the page template.php or archives.php when the preview of the theme Twenty Thirteen runs we got ourself a reverse shell.
+To do so we will need to edit the page template.php or archives.php files and overwrite the contents of it with pentestmonkey reverse shell. When running the preview of the theme Twenty Thirteen we got ourselves a reverse shell.
 
-Sometimes you need to go to the link manually, example:
+![reverseshell](https://user-images.githubusercontent.com/76821053/185798374-fd0657da-d16f-49c7-bf0d-45625933d674.png)
+
+Sometimes to trigger the explopit we need to go to the link manually, example:
+
+![filephp](https://user-images.githubusercontent.com/76821053/185798206-ee8141f9-c958-4059-a348-53aacadb7115.png)
+
+We need to start a netcat listener and ran the preview.
+ 
+![nclistenner](https://user-images.githubusercontent.com/76821053/185798414-af657d5a-4bf0-4272-ba82-d7e17fe12dd1.png)
+
+
+ 
 
 
