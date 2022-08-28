@@ -70,7 +70,7 @@ After downloading the file we can see that it holds some credentials but we need
 
 This credentials are from a sql database, they are encrypted. Braking down the credentials we can try to assume that “admin” is the username and the rest of the hash is the encrypted password.
 
-like so:
+Like so:
 
 admin:1868e36a6d2b17d4c2745f1659433a54d4bc5f4b
 
