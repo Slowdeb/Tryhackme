@@ -2,9 +2,7 @@ Room: [Mustacchio]() ONGOING TUTORIAL
 
 Difficulty: Hard
 
-Overview: In this room enumeration is very important, searching for subdomains, modify an exploit to take advantage of a chat program has well a MongoDb web interface. Find and crack hashes to compromise a Bolt CMS server till we privesc to root through cap_setuid+ep capabilities.
-
-xxe enumeration privesc web
+Overview: In this room we will exploit and XXE vulnerability in a web application, modify the exploit to gather important information. Crack encrytions, to access the machine And finally privesc to root by hijacking the PATH of an SUID binary.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -193,7 +191,7 @@ If we look at the binary permissions we can read it, and to so we can use “str
 
 PATH is an environmental variable in Linux which contains all bin and sbin directories that hold all executable programs.
 
-So we'll create a new “tail” binary that runs “/bin/bash”, this way we can try to hijack the PATH of “tail” to a specific directory and when the SUID binary with root privileges run it will trigger our new “tail” binary.
+So we'll create a new “tail” binary that runs “/bin/bash”, this way we can try to hijack the PATH of “tail” to a specific directory. When the SUID binary with root privileges runs, it will trigger our new “tail” binary.
 
 We can use these steps:
 
