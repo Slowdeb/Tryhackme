@@ -136,13 +136,13 @@ As we can see below, this XML format worked, we recieved the content of /etc/pas
 
 ![XMLformat](https://user-images.githubusercontent.com/76821053/187069519-f5f207e4-2937-44e2-9bfe-d7cf4daea789.png)
 
-The source code of the page had a message for “Barry”, saying that we could connect through ssh with his key. If we try connecting to ssh with “Barry” we will revice a message saying “Permission denied (publickey).”
+The source code of the page had a message for “Barry”, saying that we could connect through ssh with his key. If we try connecting to ssh with “Barry” we will recieve a message saying “Permission denied (publickey).”
 
 ![sshbarry](https://user-images.githubusercontent.com/76821053/187069545-cc7e4d6c-68ea-4e5e-a5d4-55d57539a363.png)
 
-This means that we can only connect to ssh with a ssh key. 
+This means that, probably we can only connect to ssh with a ssh key. 
 
-The ssh keys are normally stored at "/home/user/.ssh". We can use the same XML code to extract the keys from "barry" home directory just by change the path of file.
+The ssh keys are normally stored at "/home/user/.ssh". We can use the same XML code to extract the keys from "barry" home directory just by changing the path of the file.
 
 ![rsaprivatekey](https://user-images.githubusercontent.com/76821053/187069625-728ce5da-e996-4d63-be31-6b21db0fa18d.png)
 
