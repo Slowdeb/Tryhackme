@@ -1,6 +1,6 @@
-Room: [Mustacchio]() ONGOING TUTORIAL
+Room: [Mustacchio](https://tryhackme.com/room/mustacchio) 
 
-Difficulty: Hard
+Difficulty: Easy
 
 Overview: In this room we will exploit and XXE vulnerability in a web application, modify the exploit to gather important information. Crack encrytions, to access the machine And finally privesc to root by hijacking the PATH of an SUID binary.
 
