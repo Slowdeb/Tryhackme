@@ -132,7 +132,7 @@ Knowing this our XML code would look like this:
 </comment>
 ```
 
-Has we can see below this XML format worked, we recieved the content of /etc/passwd.
+As we can see below, this XML format worked, we recieved the content of /etc/passwd.
 
 ![XMLformat](https://user-images.githubusercontent.com/76821053/187069519-f5f207e4-2937-44e2-9bfe-d7cf4daea789.png)
 
