@@ -181,6 +181,58 @@ find / -perm -4000 -type f -exec ls -la {} 2>/dev/null \;
 find / -uid 0 -perm -4000 -type f 2>/dev/null
 ```
 
+![findperm](https://user-images.githubusercontent.com/76821053/187070125-6a6d521e-a92a-458c-9d95-d60a98732042.png)
+
+Running the binary we will get a live feed of the nginx access.log file:
+
+![accesslog](https://user-images.githubusercontent.com/76821053/187070148-1e98d600-9f1f-4db4-a376-8eb6542cd680.png)
+
+If we look at the binary permissions we can read it, and to so we can use “strings”:
+
+![strings2](https://user-images.githubusercontent.com/76821053/187070186-980a037e-2ff3-4a79-a295-faca0be13161.png)
+
+“live_log” file is using “tail” to read the “access.log”, but it is not using the full PATH.
+
+PATH is an environmental variable in Linux which contains all bin and sbin directories that hold all executable programs.
+
+So we'll create a new “tail” binary that runs “/bin/bash”, this way we can try to hijack the PATH of “tail” to a specific directory and when the SUID binary with root privileges run it will trigger our new “tail” binary.
+
+We can use these steps:
+
+```bash
+cd /tmp
+echo '/bin/bash' > tail
+chmod 777 tail
+export PATH=/tmp:$PATH
+```
+
+The PATH for tails was:
+
+![wich](https://user-images.githubusercontent.com/76821053/187070408-05257237-a503-4b7a-9be2-6fdfd943c453.png)
+
+The new PATH is now /tmp/tail, and we just have to run the SUID binary “live_log” owned by root.
+
+![runsuidbinary](https://user-images.githubusercontent.com/76821053/187070505-06172146-60d6-42b9-80dd-c4bf4a3899df.png)
+
+Success! Root privileges!!
+
+You can find the last flag at /root.
+
+![rootflag](https://user-images.githubusercontent.com/76821053/187070539-e9035ee4-85a2-46bc-bed7-30d89f8b2a45.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
