@@ -140,7 +140,7 @@ The source code of the page had a message for “Barry”, saying that we could 
 
 ![sshbarry](https://user-images.githubusercontent.com/76821053/187069545-cc7e4d6c-68ea-4e5e-a5d4-55d57539a363.png)
 
-This means that, probably we can only connect to ssh with a ssh key. 
+This means that, probably we can only connect to ssh with an ssh key. 
 
 The ssh keys are normally stored at "/home/user/.ssh". We can use the same XML code to extract the keys from "barry" home directory just by changing the path of the file.
 
@@ -167,8 +167,6 @@ We are in!
 We can find the first flag at “Barry's” home directory:
 
 ![firstflag](https://user-images.githubusercontent.com/76821053/187069874-73e62b4d-0fc3-472f-a2f0-755574b38ca0.png)
-
-barry: urieljames
 
 Knowing the path to the user.txt file we could also get it through the website:
 
