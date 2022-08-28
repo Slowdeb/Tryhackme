@@ -38,7 +38,7 @@ Port 80 hosts a http web server:
 
 ![website80](https://user-images.githubusercontent.com/76821053/186258496-eed09ad7-fb11-4263-af26-369b744af45f.png)
 
-To search for any hidden directories we can use “Gobuster”:
+To search for any hidden directories or files we can use “Gobuster”:
 
 ```
 gobuster dir --wordlist /usr/share/wordlists/dirbuster/directory-list-2.3-small.txt --url http://mustacchio.thm/ -x .txt,.cgi,.php,.log,.bak,.xxx,.old
@@ -54,7 +54,7 @@ dir             → for directory brute-force
 
 ![gobuster](https://user-images.githubusercontent.com/76821053/186258583-84e51d26-ff8c-446b-86bd-00246df49f6b.png)
 
-We can now start browsing the directories found with “gobuster”.
+We can start browsing the directories found by “gobuster” to see what we can find.
 
 There is a robots.txt file but it is empty:
 
